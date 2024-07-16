@@ -24,6 +24,7 @@ for hotel in data["businesses"]:
         'Address': ', '.join(hotel['location']['display_address']),
         'Latitude': hotel['coordinates']['latitude'],
         'Longitude': hotel['coordinates']['longitude'],
+        'Image_url': hotel['image_url'],
         'Rating': hotel.get('rating', 'N/A'),
         'Review_Count': hotel.get('review_count', 'N/A')
     }
