@@ -43,6 +43,4 @@ d3.json('restaurants.json').then(function(data) {
 
     // Call the createMap function with the restaurant markers
     createMap(restaurantMarkers);
-}).catch(function(error) {
-    console.log('Error loading or parsing data:', error);
 });
