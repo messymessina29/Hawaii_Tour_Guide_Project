@@ -24,7 +24,8 @@ for business in data['businesses']:
         'Latitude': business['coordinates']['latitude'],
         'Longitude': business['coordinates']['longitude'],
         'Rating': business.get('rating', 'N/A'),
-        'Review_Count': business.get('review_count', 'N/A')
+        'Review_Count': business.get('review_count', 'N/A'),
+        'Price': business.get('price', 'N/A')
     }
     touristic_activities.append(activity)
 

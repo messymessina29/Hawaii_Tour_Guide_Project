@@ -1,0 +1,51 @@
+Name,Type,Address,Distance(Meters),Latitude,Longitude,Rating,Price
+Olili,Desserts,"2380 Kuhio Ave, Fl 2, Urban Honolulu, HI 96815",546.2718083809292,21.27824198171364,-157.8245122,4.7,N/A
+Duke's Waikiki,Hawaiian,"2335 Kalakaua Ave, Ste 116, Honolulu, HI 96815",200.16024986479542,21.276917244893788,-157.82789122343033,4.0,$$
+Monkeypod Kitchen,Tacos,"2169 Kālia Rd, Unit 111, Honolulu, HI 96815",545.6356277748196,21.278553,-157.832735,4.3,$$
+Kūhiō Ave. Food Hall,Food Court,"2330 Kalakaua Ave, Honolulu, HI 96815",404.8118483917142,21.27826,-157.82658,4.4,$$
+Basalt,New American,"2255 Kuhio Ave, Honolulu, HI 96815",519.2011724770415,21.279612,-157.826944,4.3,$$
+Kirin Restaurant,Seafood,"2424 Kalakaua Ave, Ste 103, Honolulu, HI 96815",360.60269291632187,21.276145,-157.825078,4.2,$$
+Ginza Bairin Tonkatsu & Yoshoku Bistro,Japanese,"255 Beach Walk, Honolulu, HI 96815",570.5978322682562,21.279993,-157.830942,4.3,$$
+Paia Fish Market Waikiki,Seafood,"2299 Kuhio Ave, Honolulu, HI 96815",496.4278672847507,21.27923,-157.82654,4.5,$$
+Oli's Kitchen,Diners,"1009 University Ave, Ste MP2, Honolulu, HI 96826",2020.1397646658106,21.292111686687825,-157.8213501,4.7,$$
+Tikis Grill & Bar,Seafood,"2570 Kalakaua Ave, Honolulu, HI 96815",712.9108061498973,21.272458291032645,-157.8225621510433,4.0,$$
+Hula Grill Waikiki,Hawaiian,"2335 Kalakaua Ave, Ste 203, Honolulu, HI 96815",220.13294835808117,21.277015,-157.827677,4.1,$$
+Aloha Table,Hawaiian,"2238 Lauula St, Fl 2, Honolulu, HI 96815",513.3154729467901,21.27988690560841,-157.828208,4.0,$$
+Marugame Udon,Japanese,"2310 Kuhio Ave, Ste 124, Honolulu, HI 96815",569.3365646196864,21.279568,-157.825796,4.5,$$
+Musubi Cafe Iyasume,Japanese,"2427 Kuhio Ave, Fl 1, Aqua Pacific Monarch Hotel, Honolulu, HI 96815",535.2086711440861,21.27651520345242,-157.8237345808766,4.5,$
+Tanaka of Tokyo East,Seafood,"150 Kaiulani Ave, Fl 1, Honolulu, HI 96815",472.4665244710767,21.27763,-157.824921,4.5,$$$
+Tempura Kiki,Japanese,"2250 Kalakaua Ave, Lower Level 100-6, Honolulu, HI 96815",450.33389353525456,21.279419,-157.828457,4.8,$$
+ShoreFyre,Breakfast & Brunch,"2446 Koa Ave, Honolulu, HI 96815",485.35013326478656,21.275787,-157.824123,3.9,$$
+Aina Steak & Seafood,Steakhouses,"342 Lewers St, Urban Honolulu, HI 96815",650.8799304085172,21.28117,-157.829,4.8,N/A
+Eating House 1849 - Waikiki,Seafood,"2330 Kalakaua Ave, Space 322, Honolulu, HI 96815",340.7271612535677,21.2778288,-157.8268801,4.0,$$$
+Restaurant At The Cutlery,Steakhouses,"3435 Waialae Ave, Ste 103, Honolulu, HI 96816",2886.9038723489803,21.28428,-157.80265,4.3,$$
+Momosan Waikiki,Ramen,"2490 Kalakaua Ave, Honolulu, HI 96815",503.81611098808145,21.274265590499855,-157.8239967470667,4.2,$$
+Moani Waikiki Island Bistro & Bar,Seafood,"2330 Kalakaua Ave, Ste 312, Honolulu, HI 96815",404.8118483917142,21.27826,-157.82658,4.1,$$
+Arancino di Mare,Italian,"2552 Kalakaua Ave, Honolulu, HI 96815",621.8187141164062,21.2733038634167,-157.823124290877,4.2,$$$
+Roy's Waikiki,Hawaiian,"226 Lewers St, Honolulu, HI 96815",490.31332639373073,21.278739286639873,-157.83168809003885,4.3,$$$
+Tonkatsu Tamafuji,Japanese,"449 Kapahulu Ave, Ste 203, Honolulu, HI 96815",1381.1762584197897,21.27496581214703,-157.81540659580557,4.6,$$
+Heavenly Island Lifestyle - Waikiki,Breakfast & Brunch,"342 Seaside Ave, Honolulu, HI 96815",516.2445972406813,21.279847,-157.827817,4.2,$$
+Goofy Cafe & Dine,Cafes,"1831 Ala Moana Blvd, Ste 201, Honolulu, HI 96815",1317.0701986648908,21.28437,-157.836902216077,4.1,$$
+Tommy Bahama Restaurant | Bar | Store - Waikiki,New American,"298 Beachwalk Dr, Honolulu, HI 96815",683.7845147460797,21.2811643021006,-157.830705424681,4.4,$$$
+XO Restaurant,Asian Fusion,"3434 Waialae Ave, Ste 5, Honolulu, HI 96816",2912.088223213213,21.28486,-157.80262,4.6,$$
+Topped Waikiki,Korean,"333 Royal Hawaiian Ave, Honolulu, HI 96815",521.3968277763296,21.27992,-157.82838,4.3,$$
+Maguro Brothers Hawaii - Waikiki,Sushi Bars,"2250 Kalākaua Ave, Honolulu, HI 96815",484.24624662929733,21.279651276487577,-157.82870850410697,4.4,$$
+Deck.,Hawaiian,"150 Kapahulu Ave, Queen Kapiolani Hotel, Honolulu, HI 96815",870.662235300756,21.27201,-157.82117,3.9,$$
+Blue Water Shrimp & Seafood,Seafood,"2005 Kalia Rd, Honolulu, HI 96815",1235.677255547182,21.28403,-157.83603,4.2,$$
+Hideout at The Laylow,Bars,"2299 Kuhio Ave, Fl 2, Honolulu, HI 96815",496.4278672847507,21.27923,-157.82654,4.2,$$
+Southern Love,Southern,"753 Queen St, Unit A, Honolulu, HI 96813",3961.4070528591806,21.2998,-157.85649,4.8,$$
+The Pupu House,Tiki Bars,"310 Lewers St, Honolulu, HI 96815",585.383292323183,21.280564,-157.829594,4.5,$$
+Zigu,Seafood,"413 Seaside Ave, Ste 1F, Honolulu, HI 96815",607.9079695401515,21.28043,-157.82658,4.4,$$$
+House Without A Key,Seafood,"2199 Kalia Rd, Honolulu, HI 96815",421.5470760586963,21.2775925941243,-157.83196874785,4.1,$$$
+American Wagyu Eatery,Food Trucks,"2525 Cartwright Rd, Honolulu, HI 96815",757.5466927448853,21.2729061,-157.8214973,4.9,N/A
+Doraku Sushi Waikiki,Sushi Bars,"2233 Kalakaua Ave, Ste 304, Honolulu, HI 96815",351.0110170443298,21.2784098,-157.8292908,3.8,$$
+Straits - Honolulu,Asian Fusion,"1060 Auahi St, Ste 4, Honolulu, HI 96814",3298.0225486563745,21.294048,-157.853403,4.2,$$$
+Pau Hana Place,Seafood,"95 Holomoana St, Honolulu, HI 96815",1823.6000203156962,21.2871179,-157.8409306,4.6,$$
+Maguro Spot,Seafood,"2441 Kuhio Ave, Honolulu, HI 96815",555.6306822794404,21.276445428902484,-157.82351284391754,4.3,$$
+San Paolo Pizzeria,Pizza,"1765 Ala Moana Blvd, Ste CM3, Honolulu, HI 96815",1597.6248249774155,21.28552762699498,-157.8395570684579,4.7,N/A
+EbiNomi,Asian Fusion,"2310 Kuhio Ave, Courtyard 138, Honolulu, HI 96815",569.3365646196864,21.27952,-157.82585,4.5,$$
+ABURIYA IBUSHI,Japanese,"740 Kapahulu Ave, Honolulu, HI 96816",1614.6483140033324,21.280692,-157.8142835,4.5,$$
+Waffle and Berry,Waffles,"2250 Kalakaua Ave, Ste LL104, Honolulu, HI 96815",496.68320957545234,21.27976317250399,-157.82872415889145,4.9,$$
+Aloha Melt Waikiki,Sandwiches,"355 Royal Hawaiian Ave, Honolulu, HI 96815",594.59589972732,21.2805791044724,-157.82784207310578,4.7,$$
+Kaimuki Shokudo,Japanese,"1127 11th Ave, Honolulu, HI 96816",3044.8129471784227,21.282327,-157.800266,4.1,$$
+Aloha Steak House,Steakhouses,"364 Seaside Ave, Honolulu, HI 96815",561.575964005294,21.28017157639919,-157.8273163863397,4.1,$$$

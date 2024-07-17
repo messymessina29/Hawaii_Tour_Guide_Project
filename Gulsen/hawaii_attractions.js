@@ -60,3 +60,21 @@ d3.json('touristic_activities.json').then(function(data) {
 }).catch(function(error) {
     console.log('Error loading or parsing data:', error);
 });
+
+
+// //////*** ADDITION FOR FILTERING ***//////
+
+
+function applyFilters() {
+    let priceFilter = document.getElementById('price-filter').value;
+    let ratingFilter = parseFloat(document.getElementById('rating-filter').value);
+
+    let filteredAttractions = window.attractions.filter(function(d) {
+        let priceMatch = (priceFilter === 'all') || (d.Price === priceFilter);
+        let ratingMatch = (ratingFilter === 'all') || (d.Rating >= ratingFilter);
+        return priceMatch && ratingMatch;
+    });
+
+    let touristicMarkers = addMarkers(filteredAttractions);
+    createMap(touristicMarkers);
+}
