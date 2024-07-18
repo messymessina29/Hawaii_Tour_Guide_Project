@@ -26,7 +26,8 @@ for hotel in data["businesses"]:
         'Longitude': hotel['coordinates']['longitude'],
         'Image_url': hotel['image_url'],
         'Rating': hotel.get('rating', 'N/A'),
-        'Review_Count': hotel.get('review_count', 'N/A')
+        'Review_Count': hotel.get('review_count', 'N/A'),
+        'Buisness_ID': hotel['id']
     }
     Hawaii_hotels.append(activity)
 

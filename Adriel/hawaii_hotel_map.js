@@ -1,7 +1,12 @@
+// Global variables for map and markers
+let hawaii_map;
+let street;
+let allMarkers = L.layerGroup();
+
 // Function to create the map with base layers and overlays
 function createMap(hotels) {
     // Create the base layer
-    let street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     });
 
@@ -16,7 +21,7 @@ function createMap(hotels) {
     };
 
     // Create the map
-    let hawaii_map = L.map("map", {
+    hawaii_map = L.map("map", {
         center: [21.3099, -157.8581],
         zoom: 13,
         layers: [street, hotels]
@@ -28,23 +33,118 @@ function createMap(hotels) {
     }).addTo(hawaii_map);
 }
 
-// Load the restaurant data and create markers
-d3.json('Hawaii_hotels.json').then(function(data) {
-    // Create a layer group for restaurant markers
+// Load the hotel data and create markers
+d3.json('Resources/Hawaii_hotels.json').then(function(data) {
+    // Create a layer group for hotel markers
     let hotelMarkers = L.layerGroup();
 
     data.forEach(function(d) {
-        // Create a marker for each restaurant
+        // Create a marker for each hotel
         let marker = L.marker([d.Latitude, d.Longitude]).bindPopup(
             '<h4>' + d.Name + '</h4><br>' +
             '<img src="' + d.Image_url + '" width="100" height="100"><br>' +
-            'Type: ' + d.Type + '<br>' +
+            'Price: ' + d.Price + '<br>' +
             'Address: ' + d.Address + '<br>' +
             'Rating: ' + d.Rating
         );
+        // Save the price in marker options for filtering
+        marker.options.type = d.Price;
+        marker.options.data = d;
         hotelMarkers.addLayer(marker);
     });
 
-    // Call the createMap function with the restaurant markers
+    // Save all markers to a global variable for filtering
+    allMarkers = hotelMarkers;
+
+    // Call the createMap function with the hotel markers
     createMap(hotelMarkers);
+
+    // Populate the price selector
+    selectPrice(data);
 });
+
+// Function to populate dropdown with hotel Price
+function selectPrice(data) {
+    // Extract unique price ranges and sort them
+    let pricetypes = [...new Set(data.map(d => d.Price))].sort((a, b) => a.length - b.length);
+
+    // Select dropdown
+    let selector = d3.select('#selprice');
+
+    // Clear any existing options
+    selector.html('');
+
+    // Add an 'all' option
+    selector.append('option').text("All").property('value', 'All');
+
+    // Append price options to dropdown
+    pricetypes.forEach(price => {
+        selector.append('option').text(price).property('value', price);
+    });
+}
+
+// Function to update the bar chart with top 3 hotels
+function updateBarChart(filteredMarkers) {
+    // Sort the filtered markers by rating and get the top 3
+    let topHotels = filteredMarkers.sort((a, b) => b.Rating - a.Rating).slice(0, 3);
+
+    // Prepare the data for the bar chart
+    let barData = topHotels.map(hotel => ({
+        name: hotel.Name,
+        rating: hotel.Rating
+    }));
+
+    // Extract names and ratings for x and y values
+    let names = barData.map(hotel => hotel.name);
+    let ratings = barData.map(hotel => hotel.rating);
+
+    // Create the bar chart trace
+    let bar_trace = {
+        x: names,
+        y: ratings,
+        text: barData.map(hotel => `Name: ${hotel.name}<br>Rating: ${hotel.rating}`),
+        marker: { color: 'blue' },
+        type: 'bar'
+    };
+
+    // Define the layout for the bar chart
+    let layout = {
+        title: 'Top 3 Hotels based on Rating',
+        xaxis: { title: 'Hotels' },
+        yaxis: { title: 'Rating' }
+    };
+
+    // Render the Bar Chart
+    Plotly.newPlot('bar', [bar_trace], layout);
+}
+
+// Handle dropdown selection change
+function optionChanged(selectedprice) {
+    console.log("Selected Price:", selectedprice); // Debugging
+    if (!hawaii_map || !street || !allMarkers) {
+        // console.error("hawaii_map, street, or allMarkers is not defined");
+        return;
+    }
+
+    // Clear existing layers except base & street layer
+    hawaii_map.eachLayer(function(layer) {
+        if (layer !== street && layer !== hawaii_map.tileLayer) {
+            hawaii_map.removeLayer(layer);
+        }
+    });
+
+    // Filter markers based on the selected price & add to map
+    let filteredMarkers = [];
+    allMarkers.eachLayer(function(marker) {
+        if (selectedprice === 'All' || marker.options.type === selectedprice) {
+            hawaii_map.addLayer(marker);
+            filteredMarkers.push(marker.options.data);
+        }
+    });
+
+    // Update the bar chart with the filtered data
+    updateBarChart(filteredMarkers);
+}
+
+// Call the updateBarChart function with an empty array when the page loads to initialize the bar chart
+updateBarChart([]);
