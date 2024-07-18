@@ -3,6 +3,7 @@
 <head>
     <title>Hawaii Map</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         #map {
             height: 600px;
@@ -10,7 +11,23 @@
     </style>
 </head>
 <body>
-    <div id="map"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- This is where you can add other components of your dashboard -->
+                <h2>Top Restaruants to Dine at In Hawaii</h2>
+                
+                <div class="card card-body bg-light">
+                    <h6>Select What You're in the Mood For:</h6>
+                    <select id="selType" onchange="optionChanged(this.value)"></select>
+                  </div>
+                  <br>
+            </div>
+            <div class="col-md-7">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="hawaii_map.js"></script>
