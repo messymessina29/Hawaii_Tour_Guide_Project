@@ -6,7 +6,7 @@
         "Latitude": 21.51884732893545,
         "Longitude": -157.85340004811957,
         "Rating": 4.6,
-        "Review_Count": 5169,
+        "Review_Count": 5175,
         "Price": "N/A"
     },
     {
@@ -16,7 +16,7 @@
         "Latitude": 21.26294466638638,
         "Longitude": -157.803324075843,
         "Rating": 4.5,
-        "Review_Count": 2150,
+        "Review_Count": 2152,
         "Price": "N/A"
     },
     {
@@ -30,6 +30,16 @@
         "Price": "N/A"
     },
     {
+        "Name": "Atlantis Submarines Waikiki",
+        "Type": "Kids Activities",
+        "Address": "252 Paoa Pl, Honolulu, HI 96815",
+        "Latitude": 21.280492754924296,
+        "Longitude": -157.83808140423142,
+        "Rating": 3.8,
+        "Review_Count": 333,
+        "Price": "N/A"
+    },
+    {
         "Name": "Magic Island",
         "Type": "Parks",
         "Address": "1201 Ala Moana Blvd, Honolulu, HI 96814",
@@ -37,16 +47,6 @@
         "Longitude": -157.8463187109791,
         "Rating": 4.6,
         "Review_Count": 150,
-        "Price": "N/A"
-    },
-    {
-        "Name": "Atlantis Submarines Waikiki",
-        "Type": "Kids Activities",
-        "Address": "252 Paoa Pl, Honolulu, HI 96815",
-        "Latitude": 21.280492754924296,
-        "Longitude": -157.83808140423142,
-        "Rating": 3.8,
-        "Review_Count": 332,
         "Price": "N/A"
     },
     {
@@ -60,16 +60,6 @@
         "Price": "N/A"
     },
     {
-        "Name": "Hawaii Glass Bottom Boats",
-        "Type": "Boat Charters",
-        "Address": "1009 Ala Moana Blvd F21, Honolulu, HI 96814",
-        "Latitude": 21.2941818261187,
-        "Longitude": -157.856524252788,
-        "Rating": 4.7,
-        "Review_Count": 573,
-        "Price": "N/A"
-    },
-    {
         "Name": "Iolani Palace",
         "Type": "Museums",
         "Address": "364 S King St, Honolulu, HI 96813",
@@ -77,6 +67,16 @@
         "Longitude": -157.85876,
         "Rating": 4.5,
         "Review_Count": 736,
+        "Price": "N/A"
+    },
+    {
+        "Name": "Hawaii Glass Bottom Boats",
+        "Type": "Boat Charters",
+        "Address": "1009 Ala Moana Blvd F21, Honolulu, HI 96814",
+        "Latitude": 21.2941818261187,
+        "Longitude": -157.856524252788,
+        "Rating": 4.7,
+        "Review_Count": 574,
         "Price": "N/A"
     },
     {
@@ -96,7 +96,7 @@
         "Latitude": 21.26558,
         "Longitude": -157.82179,
         "Rating": 3.6,
-        "Review_Count": 658,
+        "Review_Count": 657,
         "Price": "N/A"
     },
     {
@@ -146,17 +146,17 @@
         "Latitude": 21.26327440802909,
         "Longitude": -157.82116074149408,
         "Rating": 4.3,
-        "Review_Count": 189,
+        "Review_Count": 190,
         "Price": "N/A"
     },
     {
-        "Name": "Ka'au Crater",
-        "Type": "Hiking",
-        "Address": "3000 10th Ave, Honolulu, HI 96816",
-        "Latitude": 21.310546,
-        "Longitude": -157.7819956,
+        "Name": "Shangri La Museum of Islamic Art Culture & Design",
+        "Type": "Museums",
+        "Address": "4055 Papu Cir, Honolulu, HI 96816",
+        "Latitude": 21.2569227,
+        "Longitude": -157.7950458,
         "Rating": 4.5,
-        "Review_Count": 192,
+        "Review_Count": 129,
         "Price": "N/A"
     },
     {
@@ -170,26 +170,6 @@
         "Price": "N/A"
     },
     {
-        "Name": "The Arts at Mark's Garage",
-        "Type": "Art Galleries",
-        "Address": "1159 Nuuanu Ave, Honolulu, HI 96817",
-        "Latitude": 21.31139,
-        "Longitude": -157.86081,
-        "Rating": 4.4,
-        "Review_Count": 38,
-        "Price": "$"
-    },
-    {
-        "Name": "Shangri La Museum of Islamic Art Culture & Design",
-        "Type": "Museums",
-        "Address": "4055 Papu Cir, Honolulu, HI 96816",
-        "Latitude": 21.2569227,
-        "Longitude": -157.7950458,
-        "Rating": 4.5,
-        "Review_Count": 129,
-        "Price": "N/A"
-    },
-    {
         "Name": "Rock-a-Hula",
         "Type": "Performing Arts",
         "Address": "2201 Kalakaua Ave, Bldg B Fl 4, Royal Hawaiian Theater, Honolulu, HI 96815",
@@ -200,16 +180,6 @@
         "Price": "$$$"
     },
     {
-        "Name": "Dolphin Excursions Hawaii",
-        "Type": "Snorkeling",
-        "Address": "85-491 Farrington Hwy, Waianae Boat Harbor, Waianae, HI 96792",
-        "Latitude": 21.4516,
-        "Longitude": -158.195864,
-        "Rating": 4.9,
-        "Review_Count": 682,
-        "Price": "N/A"
-    },
-    {
         "Name": "Mysteries of Hawaii",
         "Type": "Historical Tours",
         "Address": "Honolulu, HI 96816",
@@ -217,6 +187,16 @@
         "Longitude": -157.79781,
         "Rating": 4.8,
         "Review_Count": 46,
+        "Price": "N/A"
+    },
+    {
+        "Name": "Dolphin Excursions Hawaii",
+        "Type": "Snorkeling",
+        "Address": "85-491 Farrington Hwy, Waianae Boat Harbor, Waianae, HI 96792",
+        "Latitude": 21.4516,
+        "Longitude": -158.195864,
+        "Rating": 4.9,
+        "Review_Count": 683,
         "Price": "N/A"
     },
     {
@@ -250,6 +230,26 @@
         "Price": "N/A"
     },
     {
+        "Name": "The Arts at Mark's Garage",
+        "Type": "Art Galleries",
+        "Address": "1159 Nuuanu Ave, Honolulu, HI 96817",
+        "Latitude": 21.31139,
+        "Longitude": -157.86081,
+        "Rating": 4.4,
+        "Review_Count": 38,
+        "Price": "$"
+    },
+    {
+        "Name": "Ka'au Crater",
+        "Type": "Hiking",
+        "Address": "3000 10th Ave, Honolulu, HI 96816",
+        "Latitude": 21.310546,
+        "Longitude": -157.7819956,
+        "Rating": 4.5,
+        "Review_Count": 192,
+        "Price": "N/A"
+    },
+    {
         "Name": "Waikiki Beach Walls",
         "Type": "Beaches",
         "Address": "2605 Kalakaua Ave, Honolulu, HI 96815",
@@ -270,26 +270,6 @@
         "Price": "N/A"
     },
     {
-        "Name": "Hawaiian Style Rentals",
-        "Type": "Scooter Rentals",
-        "Address": "138 Uluniu Ave, Honolulu, HI 96815",
-        "Latitude": 21.27615,
-        "Longitude": -157.82418,
-        "Rating": 4.8,
-        "Review_Count": 47,
-        "Price": "N/A"
-    },
-    {
-        "Name": "Kailua Beach Adventures",
-        "Type": "Bike Rentals",
-        "Address": "130 Kailua Rd, Ste 101B, Kailua, HI 96734",
-        "Latitude": 21.39676,
-        "Longitude": -157.73105,
-        "Rating": 4.8,
-        "Review_Count": 1575,
-        "Price": "N/A"
-    },
-    {
         "Name": "Hawaii Children's Discovery Center",
         "Type": "Venues & Event Spaces",
         "Address": "111 Ohe St, Honolulu, HI 96813",
@@ -300,13 +280,23 @@
         "Price": "N/A"
     },
     {
-        "Name": "Spinway Hawaii",
+        "Name": "Kailua Beach Adventures",
         "Type": "Bike Rentals",
-        "Address": "Outrigger Reef- Embassy Suites- Ala Moana Hotels, Honolulu, HI 96815",
-        "Latitude": 21.279234,
-        "Longitude": -157.83162,
-        "Rating": 3.7,
-        "Review_Count": 3,
+        "Address": "130 Kailua Rd, Ste 101B, Kailua, HI 96734",
+        "Latitude": 21.39676,
+        "Longitude": -157.73105,
+        "Rating": 4.8,
+        "Review_Count": 1578,
+        "Price": "N/A"
+    },
+    {
+        "Name": "Hawaiian Style Rentals",
+        "Type": "Scooter Rentals",
+        "Address": "138 Uluniu Ave, Honolulu, HI 96815",
+        "Latitude": 21.27615,
+        "Longitude": -157.82418,
+        "Rating": 4.8,
+        "Review_Count": 47,
         "Price": "N/A"
     },
     {
@@ -317,6 +307,16 @@
         "Longitude": -157.8487020079198,
         "Rating": 4.5,
         "Review_Count": 336,
+        "Price": "N/A"
+    },
+    {
+        "Name": "Spinway Hawaii",
+        "Type": "Bike Rentals",
+        "Address": "Outrigger Reef- Embassy Suites- Ala Moana Hotels, Honolulu, HI 96815",
+        "Latitude": 21.279234,
+        "Longitude": -157.83162,
+        "Rating": 3.7,
+        "Review_Count": 3,
         "Price": "N/A"
     },
     {
@@ -356,7 +356,7 @@
         "Latitude": 21.328079,
         "Longitude": -158.11942,
         "Rating": 5.0,
-        "Review_Count": 85,
+        "Review_Count": 86,
         "Price": "N/A"
     },
     {
@@ -390,16 +390,6 @@
         "Price": "N/A"
     },
     {
-        "Name": "Maita'i Catamaran",
-        "Type": "Boating",
-        "Address": "2255 Kalakaua Ave, Honolulu, HI 96815",
-        "Latitude": 21.2770179341013,
-        "Longitude": -157.831274271011,
-        "Rating": 4.5,
-        "Review_Count": 634,
-        "Price": "N/A"
-    },
-    {
         "Name": "Oahu Circle Island Snorkel Tour",
         "Type": "Snorkeling",
         "Address": "Waikiki, HI 96815",
@@ -410,13 +400,13 @@
         "Price": "N/A"
     },
     {
-        "Name": "Kuhio Beach Park",
-        "Type": "Parks",
-        "Address": "2453 Kalakaua Ave, Honolulu, HI 96815",
-        "Latitude": 21.2746110775967,
-        "Longitude": -157.824768323882,
-        "Rating": 4.1,
-        "Review_Count": 84,
+        "Name": "Maita'i Catamaran",
+        "Type": "Boating",
+        "Address": "2255 Kalakaua Ave, Honolulu, HI 96815",
+        "Latitude": 21.2770179341013,
+        "Longitude": -157.831274271011,
+        "Rating": 4.5,
+        "Review_Count": 634,
         "Price": "N/A"
     },
     {
@@ -428,6 +418,16 @@
         "Rating": 3.5,
         "Review_Count": 15,
         "Price": "$$$"
+    },
+    {
+        "Name": "Kuhio Beach Park",
+        "Type": "Parks",
+        "Address": "2453 Kalakaua Ave, Honolulu, HI 96815",
+        "Latitude": 21.2746110775967,
+        "Longitude": -157.824768323882,
+        "Rating": 4.1,
+        "Review_Count": 84,
+        "Price": "N/A"
     },
     {
         "Name": "Ala Moana Regional Park",
@@ -470,16 +470,6 @@
         "Price": "N/A"
     },
     {
-        "Name": "E Sea Diver",
-        "Type": "Snorkeling",
-        "Address": "1025 Ala Moana Blvd, F-18, Honolulu, HI 96814",
-        "Latitude": 21.29368,
-        "Longitude": -157.85547,
-        "Rating": 4.1,
-        "Review_Count": 125,
-        "Price": "N/A"
-    },
-    {
         "Name": "Captain Bruce",
         "Type": "Boat Charters",
         "Address": "46-499 Kamehameha Hwy, He'eia Kea Boat Harbor, Kaneohe, HI 96744",
@@ -490,13 +480,23 @@
         "Price": "N/A"
     },
     {
+        "Name": "E Sea Diver",
+        "Type": "Snorkeling",
+        "Address": "1025 Ala Moana Blvd, F-18, Honolulu, HI 96814",
+        "Latitude": 21.29368,
+        "Longitude": -157.85547,
+        "Rating": 4.1,
+        "Review_Count": 125,
+        "Price": "N/A"
+    },
+    {
         "Name": "Oahu Catamarans",
         "Type": "Boat Charters",
         "Address": "1025 Ala Moana Blvd, Pier A Slip 0, Honolulu, HI 96814",
         "Latitude": 21.2942105,
         "Longitude": -157.8570873,
         "Rating": 4.8,
-        "Review_Count": 191,
+        "Review_Count": 192,
         "Price": "N/A"
     }
 ]

@@ -1,69 +1,49 @@
 // Function to create the map with base layers and overlays
-function createMap(touristicActivities) {
+function createMap() {
     // Create the base layer
     let street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     });
 
-    // Create a baseMaps object
-    let baseMaps = {
-        "Street Map": street,
-    };
-
-    // Create an overlay object to hold our overlay
-    let overlayMaps = {
-        "Touristic Activities": touristicActivities
-    };
-
     // Create the map
-    let hawaii_map = L.map("map", {
+    window.hawaii_map = L.map("map", {
         center: [21.2817, -157.8294], // Centered on Waikiki, Honolulu
         zoom: 13,
-        layers: [street, touristicActivities]
+        layers: [street]
+    });
+}
+
+// Function to add markers to the map
+function addMarkers(data) {
+    // Clear existing markers
+    if (window.touristicMarkers) {
+        window.hawaii_map.removeLayer(window.touristicMarkers);
+    }
+
+    window.touristicMarkers = L.layerGroup();
+
+    data.forEach(function(d) {
+        let marker = L.marker([d.Latitude, d.Longitude]).bindPopup(
+            '<b>' + d.Name + '</b><br>Type: ' + d.Type + '<br>Address: ' + d.Address + '<br>Rating: ' + d.Rating + ' (' + d.Review_Count + ' reviews)'
+        );
+        window.touristicMarkers.addLayer(marker);
     });
 
-    // Add layer control to the map
-    L.control.layers(baseMaps, overlayMaps, {
-        collapsed: false
-    }).addTo(hawaii_map);
+    window.touristicMarkers.addTo(window.hawaii_map);
 }
 
 // Load the touristic activities data and create markers
 d3.json('touristic_activities.json').then(function(data) {
-    // Create a layer group for touristic activity markers
-    let touristicMarkers = L.layerGroup();
+    window.attractions = data;  // Store data in a global variable for filtering
 
-    data.forEach(function(d) {
-        // Create a marker for each touristic activity
-        let marker = L.marker([d.Latitude, d.Longitude]).bindPopup(
-            '<b>' + d.Name + '</b><br>Type: ' + d.Type + '<br>Address: ' + d.Address + '<br>Rating: ' + d.Rating + ' (' + d.Review_Count + ' reviews)'
-        );
-        touristicMarkers.addLayer(marker);
-    });
+    // Create the map
+    createMap();
 
-    // Call the createMap function with the touristic activity markers
-    createMap(touristicMarkers);
+    // Create initial markers
+    addMarkers(data);
 }).catch(function(error) {
     console.log('Error loading or parsing data:', error);
 });
-console.log('Loading touristic activities data...');
-d3.json('touristic_activities.json').then(function(data) {
-    console.log('Data loaded:', data); // Debugging statement
-    let touristicMarkers = L.layerGroup();
-    data.forEach(function(d) {
-        let marker = L.marker([d.Latitude, d.Longitude]).bindPopup(
-            '<b>' + d.Name + '</b><br>Type: ' + d.Type + '<br>Address: ' + d.Address + '<br>Rating: ' + d.Rating + ' (' + d.Review_Count + ' reviews)'
-        );
-        touristicMarkers.addLayer(marker);
-    });
-    createMap(touristicMarkers);
-}).catch(function(error) {
-    console.log('Error loading or parsing data:', error);
-});
-
-
-// //////*** ADDITION FOR FILTERING ***//////
-
 
 function applyFilters() {
     let priceFilter = document.getElementById('price-filter').value;
@@ -71,10 +51,13 @@ function applyFilters() {
 
     let filteredAttractions = window.attractions.filter(function(d) {
         let priceMatch = (priceFilter === 'all') || (d.Price === priceFilter);
-        let ratingMatch = (ratingFilter === 'all') || (d.Rating >= ratingFilter);
+        let ratingMatch = (isNaN(ratingFilter)) || (d.Rating >= ratingFilter);
         return priceMatch && ratingMatch;
     });
 
-    let touristicMarkers = addMarkers(filteredAttractions);
-    createMap(touristicMarkers);
+    addMarkers(filteredAttractions);
 }
+
+document.getElementById('price-filter').addEventListener('change', applyFilters);
+document.getElementById('rating-filter').addEventListener('change', applyFilters);
+document.querySelector('button').addEventListener('click', applyFilters);

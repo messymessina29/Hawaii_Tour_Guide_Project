@@ -1,5 +1,6 @@
 import requests
 import json
+import pandas as pd 
 from config import API_KEY
 
 HEADERS = {'Authorization': f'Bearer {API_KEY}'}
@@ -33,3 +34,9 @@ with open('touristic_activities.json', 'w') as f:
     json.dump(touristic_activities, f, indent=4)
 
 print("Touristic activities data saved to 'touristic_activities.json'")
+csv_path = os.path.join(os.getcwd(), 'touristic_activities.csv')
+
+df = pd.DataFrame(touristic_activities)
+df.to_csv('touristic_activities.csv', index=False)
+
+print("Touristic activities data saved to 'touristic_activities.csv'")
