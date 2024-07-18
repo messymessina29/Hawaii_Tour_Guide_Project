@@ -26,7 +26,7 @@ function createMap() {
 }
 
 // Load the restaurant data and create markers
-d3.json('Resources/hawaii_restaurants.json').then(function(data) {
+d3.json('Resources/hawaii_restaurants_nodups.json').then(function(data) {
     // Create a layer group for restaurant markers
     data.forEach(function(d) {
         // Create a marker for each restaurant
@@ -78,6 +78,33 @@ function optionChanged(selectedType) {
         if (selectedType === "All" || marker.type === selectedType) {
             hawaii_map.addLayer(marker);
         }
+    });
+
+    createTable(selectedType);
+}
+// Function to update the table with top 5 restaurants based on the selected type
+function createTable(selectedType) {
+    // Filter data based on the selected type
+    let filteredData = window.initialData.filter(d => selectedType === "All" || d.Type === selectedType);
+
+    // Sort data by rating in descending order
+    filteredData.sort((a, b) => b.Rating - a.Rating);
+
+    // Get the top 5 restaurants
+    let top5rest = filteredData.slice(0, 5);
+
+    // Select the table body
+    let tablebody = d3.select("#restaurantTable tbody");
+
+    // Clear existing rows
+    tablebody.html("");
+
+    // Append rows with the top 5 restaurants
+    top5rest.forEach(d => {
+        let row = tablebody.append("tr");
+        row.append("td").text(d.Name);
+        row.append("td").text(d.Rating);
+        row.append("td").text(d.Price);
     });
 }
 
