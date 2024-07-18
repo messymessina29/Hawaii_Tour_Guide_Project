@@ -1,54 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Bellybutton Biodiversity</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <title>Event Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      background-image: url('night.jfif'); /* Path to your image */
+      background-size: cover; /* Ensure the image covers the entire container */
+      background-position: center; /* Center the image */
+      background-attachment: fixed; /* Keep the background fixed on scroll */
+      background-repeat: no-repeat; /* Do not repeat the image */
+    }
+
+    #tm_link {
+      display: block; /* or inline-block depending on your layout */
+      text-align: left;
+      padding: 10px;
+      font-size: 18px; /* Adjust as needed */
+      color: #007bff; /* Link color */
+      text-decoration: none; /* Remove underline */
+  }
+
+  #tm_link:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+
+
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffffff;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .header h1 {
+      margin: 0;
+    }
+
+    .header p {
+      margin: 0;
+      color: #6c757d;
+    }
+
+    .flex-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .column-container {
+      display: flex;
+      flex-direction: column;
+      flex: 0 0 20%;
+    }
+
+    .event-info, .calendar-container, .additional-info, .map-container {
+      background-color: #ffffff;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .event-info {
+      flex: 0 0 20%; /* 20% of the container */
+    }
+
+    .calendar-container {
+      flex: 0 0 100%; /* 100% width of the column */
+      margin-bottom: 20px; /* Add some space between the calendar and additional info */
+    }
+
+    .additional-info {
+      flex: 0 0 100%; /* 100% width of the column */
+    }
+
+    .map-container {
+      flex: 0 0 60%; /* 60% of the container */
+      height: 600px; /* Increase the height of the map */
+      margin-right: 0; /* Remove the right margin */
+    }
+
+    .card-title {
+      font-size: 1.25em;
+      margin-bottom: 10px;
+      color: #343a40;
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    #map {
+      width: 90%;
+      height: 100%;
+    }
+
+  </style>
 </head>
-
 <body>
-
   <div class="container">
-    <div class="row">
-      <div class="col-md-12 p-5 text-center bg-light">
-        <h1>Belly Button Biodiversity Dashboard</h1>
-        <p>Use the interactive charts below to explore the dataset</p>
-      </div>
+    <div class="header">
+      <h1>Hawaii Live!</h1>
+      <h4>Check out the upcoming live shows all over Hawaii using our interactive calendar!</h4>
+      <a id="tm_link" href="https://www.ticketmaster.com/?landing=c&awtrc=true&c=SEM_TMBRAND_ggl_298560299_24300724499_ticketmaster.com&GCID=0&&gad_source=1&gclid=CjwKCAjw1920BhA3EiwAJT3lSTiBIvBdGfQIzHGFkCIvj9_LsVn4qCe9JNJYiwSosUq6-lS_9ofvchoCmh4QAvD_BwE&gclsrc=aw.ds" target="_blank">Visit Ticketmaster</a>
+      
     </div>
-    <br>
-    <div class="row">
-      <div class="col-md-3">
-        <div class="card card-body bg-light">
-          <h6>Test Subject ID Number:</h6>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
-        </div>
-        <br>
-        <div class="card card-primary">
-          <div class="card-header">
-            <h4 class="card-title">Demographic Info</h4>
+    <div class="flex-container">
+      <div class="event-info">
+        <div class="card-primary">
+          <div id="event-info-title">
+            <h4 class="card-title">Live Event Info</h4>
           </div>
           <div id="sample-metadata" class="card-body"></div>
         </div>
       </div>
-      <div class="col-md-9">
-        <div id="bar"></div>
+      <div class="column-container">
+        <div class="calendar-container">
+          <div id="datePicker"></div>
+        </div>
+        <div class="additional-info">
+          <div class="card-primary">
+            <div id="additional-info-title">
+              <h4 class="card-title">Information on Yelp activities</h4>
+            </div>
+            <div id="event-details" class="card-body"></div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div id="bubble"></div>
+      <div class="map-container">
+        <div id="map"></div>
       </div>
     </div>
   </div>
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="Starter_Code/static/js/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="tm_visuals.js"></script>
 
+  
 </body>
-
 </html>
-
