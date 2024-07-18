@@ -36,7 +36,11 @@ d3.json('Hawaii_hotels.json').then(function(data) {
     data.forEach(function(d) {
         // Create a marker for each restaurant
         let marker = L.marker([d.Latitude, d.Longitude]).bindPopup(
-            '<b>' + d.Name + '</b><br>Type: ' + d.Type + '<br>Address: ' + d.Address + '<br>Distance: ' + d['Distance(Miles)'] + ' miles'
+            '<h4>' + d.Name + '</h4><br>' +
+            '<img src="' + d.Image_url + '" width="100" height="100"><br>' +
+            'Type: ' + d.Type + '<br>' +
+            'Address: ' + d.Address + '<br>' +
+            'Rating: ' + d.Rating
         );
         hotelMarkers.addLayer(marker);
     });
