@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hawaii Map</title>
+    <title>Hawaii Restaurant Dashboard</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
@@ -17,7 +17,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4">
-                <h2>Top Restaruants to Dine at In Hawaii</h2>
+                <h2>Top Restaruants to Dine at Near Honolulu</h2>
                 <div class="card card-body bg-light">
                     <h6>Select What You're in the Mood For:</h6>
                     <select id="selType" onchange="optionChanged(this.value)"></select>
@@ -39,7 +39,7 @@
                     </table>
                 </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-8">
                 <div id="map"></div>
             </div>
         </div>

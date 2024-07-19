@@ -2,6 +2,7 @@
 let hawaii_map;
 let allMarkers = L.layerGroup();
 let street;
+let restMarkers = new Map(); // Map to store markers by restaurant name
 
 // Function to create the map with base layers and overlays
 function createMap() {
@@ -35,6 +36,7 @@ d3.json('Resources/hawaii_restaurants_nodups.json').then(function(data) {
         );
         marker.type = d.Type;  // Add a custom property to the marker
         allMarkers.addLayer(marker);
+        restMarkers.set(d.Name, marker); // Store marker in the map
     });
 
     // Add the restaurant markers to the map
@@ -82,6 +84,7 @@ function optionChanged(selectedType) {
 
     createTable(selectedType);
 }
+
 // Function to update the table with top 5 restaurants based on the selected type
 function createTable(selectedType) {
     // Filter data based on the selected type
@@ -102,7 +105,11 @@ function createTable(selectedType) {
     // Append rows with the top 5 restaurants
     top5rest.forEach(d => {
         let row = tablebody.append("tr");
-        row.append("td").text(d.Name);
+        let clickName = row.append("td").text(d.Name).style("cursor", "pointer").on("click", function() {
+            let marker = restMarkers.get(d.Name);
+            hawaii_map.setView(marker.getLatLng(), 15);
+            marker.openPopup();
+        });
         row.append("td").text(d.Rating);
         row.append("td").text(d.Price);
     });
