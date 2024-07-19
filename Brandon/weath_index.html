@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5-Day Weather Forecast for Honolulu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .forecast-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .forecast-card {
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px;
+            width: 220px;
+            text-align: center;
+        }
+        .forecast-card h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        .forecast-card p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Honolulu 5-day Weather Forecast</h1>
+    <div id="forecast" class="forecast-container"></div>
+
+    <script>
+
+        fetch('weather_forecast.json')
+            .then(response => response.json())
+            .then(data => {
+                const forecastContainer = document.getElementById('forecast');
+                forecastContainer.innerHTML = '';
+
+                data.forEach(day => {
+
+                    const card = document.createElement('div');
+                    card.className = 'forecast-card';
+
+
+                    card.innerHTML = `
+                        <h3>${new Date(day.date).toDateString()}</h3>
+                        <p>High: ${day.daily_high} °F</p>
+                        <p>Low: ${day.daily_low} °F</p>
+                        <p>Humidity: ${day.avg_humidity} %</p>
+                        <p>Wind Speed: ${day.avg_wind_speed} mph</p>
+                    `;
+
+
+                    forecastContainer.appendChild(card);
+                });
+            });
+    </script>
+</body>
+</html>
