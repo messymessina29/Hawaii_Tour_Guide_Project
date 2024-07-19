@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hawaii Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        #map {
+            height: 600px;
+        }
+        .table-container h6 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Top Restaruants to Dine at In Hawaii</h2>
+                <div class="card card-body bg-light">
+                    <h6>Select What You're in the Mood For:</h6>
+                    <select id="selType" onchange="optionChanged(this.value)"></select>
+                  </div>
+                  <br>
+                  <div class="card card-body bg-light table-container">
+                    <h6>Top 5 Restaurants Sorted By Highest Rating</h6>
+                    <table class="table table-striped" id="restaurantTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Rating</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+        const jsonDataUrl = "{{ url_for('static', filename='json/hawaii_restaurants_nodups.json') }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/hawaii_map.js') }}"></script>
+</body>
+</html>

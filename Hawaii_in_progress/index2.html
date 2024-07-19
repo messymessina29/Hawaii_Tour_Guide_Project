@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Event Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-oN6hZygiz8jRWZDKb99HUPeT0Ihx7JIT3OjBYl6fu4z+4ZjvbC/bhC60edFf8JpQ" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    /* Custom styling for the layout */
+    .flex-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .event-info {
+      flex: 0 0 20%; /* Adjust width to 20% of the container */
+      margin-right: 20px;
+    }
+
+    .calendar-container {
+      flex: 0 0 15%; /* Take up 15% of the container */
+      margin-right: 20px;
+    }
+
+    .map-container {
+      flex: 0 0 50%; /* Take up 50% of the container */
+      height: 500px; /* Set a fixed height for the map */
+    }
+
+    .additional-info {
+      flex: 0 0 15%; /* Take up 15% of the container */
+      margin-top: 20px; /* Add some space between calendar and additional info */
+    }
+
+    /* Adjusting the Flatpickr popup calendar */
+    .flatpickr-calendar {
+      font-size: 14px;
+      width: 100%;
+      z-index: 9999; /* Ensure it appears above other elements */
+      position: relative; /* Allow positioning */
+      margin: 0 auto; /* Center the calendar */
+    }
+
+    /* Center align input fields within card */
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    /* Ensure the map has a height */
+    #map {
+      width: 100%;
+      height: 100%; /* Full height within the container */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 p-5 text-center bg-light">
+        <h1>Event Dashboard</h1>
+        <p>Use the interactive charts below to explore the dataset</p>
+      </div>
+    </div>
+    <br>
+    <div class="row flex-container">
+      <div class="event-info">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h4 class="card-title">Event Info</h4>
+          </div>
+          <div id="sample-metadata" class="card-body"></div>
+        </div>
+      </div>
+      <div class="calendar-container">
+        <!-- Flatpickr calendar will be embedded here -->
+        <div id="datePicker"></div>
+        <div class="additional-info">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h4 class="card-title">Additional Event Details</h4>
+            </div>
+            <div id="event-details" class="card-body"></div>
+          </div>
+        </div>
+      </div>
+      <div class="map-container">
+        <!-- Placeholder for the map -->
+        <div id="map"></div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-9">
+        <div id="bar"></div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="bubble"></div> <!-- Bubble chart will be embedded here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Including necessary JavaScript libraries -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> <!-- Include Leaflet.js library -->
+  <script src="tm_visuals2.js"></script>
+</body>
+</html>
+
+
