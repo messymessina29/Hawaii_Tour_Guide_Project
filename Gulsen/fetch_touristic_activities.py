@@ -1,3 +1,4 @@
+import pymongo
 import requests
 import json
 import pandas as pd 
@@ -12,7 +13,9 @@ params = {
     'categories': 'active,arts',
     'limit': 50
 }
-
+client = pymongo.MongoClient("mongodb://localhost:27017/")
+db = client["Hawaii_db"]
+collection = db['touristic_activities']
 response = requests.get(SEARCH_URL, headers=HEADERS, params=params)
 data = response.json()
 
