@@ -14,62 +14,81 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>  
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <style>
-    #map {
-      height: 600px;
-      width: 100%; 
-      background-color: white; /* Set the background color to white */
-      padding: 20px; /* Add padding inside the container */
-      border-radius: 10px; /* Rounded corners for aesthetics */
-    }
-    .side-panel {
-      margin-top: 20px; /* Adjust the margin value as needed */
-    }
-    body {
+    /* body {
       font-family: Arial, sans-serif;
       background-color: #f8f9fa;
       margin: 0;
       padding: 0;
-      background-image: url('Images/Oahu-Hotels-in-Hawaii.webp'); /* Path to your image */
-      background-size: cover; /* Ensure the image covers the entire container */
-      background-position: center; /* Center the image */
-      background-attachment: fixed; /* Keep the background fixed on scroll */
-      background-repeat: no-repeat; /* Do not repeat the image */
-    }
+      background-image: url('Images/Oahu-Hotels-in-Hawaii.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    } */
     .navbar {
-      display: flex;
-      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background for visibility */
+      margin-bottom: 0; /* Remove the bottom margin of the navbar */
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .main-header-content {
+      margin-top: 0; /* Remove the top margin of the main header content */
+      font-weight: bold; /* Make the text bold */
+      color: white; /* Change the text color to white for better contrast */
+      text-shadow: 
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000; /* Add a black outline to the letters */
+    }
+    .header-box {
+      background-image: url('Images/Oahu-Hotels-in-Hawaii.webp');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #ffffff; /* Change font color to white */
       padding: 20px; /* Add padding inside the container */
       border-radius: 10px; /* Rounded corners for aesthetics */
     }
-      .container {
-      display: flex;
-      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background for visibility */
-      padding: 20px; /* Add padding inside the container */
-      border-radius: 10px; /* Rounded corners for aesthetics */
+    .container, .card {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 0px;
     }
-    .card {
-      display: flex;
-      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background for visibility */
-      padding: 20px; /* Add padding inside the container */
-      border-radius: 10px; /* Rounded corners for aesthetics */
+    #map {
+      height: 848px;
+      width: 100%;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
     }
-    .container-fluid {
-      background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background for visibility */
-      padding: 20px; /* Add padding inside the container */
-      border-radius: 10px; /* Rounded corners for aesthetics */
+    .side-panel {
+      margin-top: 20px;
+      margin-bottom: 0px;
     }
-    .col-md-12 {
-      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background for visibility */
+    .bar-title {
+      background-color: white;
+      color: #20B2AA; /* Change font color to white */
       padding: 20px; /* Add padding inside the container */
       border-radius: 10px; /* Rounded corners for aesthetics */
+      margin-bottom: 0px;
     }
-    .col-md-4 {
-      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background for visibility */
-      padding: 20px; /* Add padding inside the container */
-      border-radius: 10px; /* Rounded corners for aesthetics */
-
+    .bar-title {
+      background-color: white;
+      color: #20B2AA; /* Change font color to white */
+    }
+    .bar-graph-separator {
+      text-align: center; /* Center align the image */
+      margin-bottom: 10px; /* Add some space below the image */
+      margin-top: 0px;
+    }
+    .separator-icon {
+      width: 250px; /* Adjust the width of the image */
+      height: auto; /* Maintain the aspect ratio */
+    }
   </style>
 </head>
 
@@ -99,11 +118,10 @@
   </nav>
 
   <!-- Main Header Content -->
-  <div class="container-fluid">
+  <div class="container-fluid main-header-content">
     <div class="row">
-      <div class="col-md-12 p-5 text-center bg-light">
-        <h1>Hawaii Hotels</h1>
-        <p>Browse through our collection of Hawaii hotels. Utilize the price selector to filter by price range. You will see information update in our information and Top 3 section assit you in making the best selection for your trip!</p>
+      <div class="col-md-12 header-box p-5 text-center bg-light">
+        <h1 style="font-size: 4rem;"">Find the perfect hotel for your Hawaii Trip!</h1>
       </div>
     </div>
     <div class="row">
@@ -118,6 +136,7 @@
     <div class="row">
       <!-- Hotel Side Panel -->
       <div class="col-md-3 side-panel">
+        <p>Utilize our price filter to assist you in making the best selection for your stay.</p>
         <div class="card card-body bg-light">
           <h6>Select your hotel price range:</h6>
           <select id="selprice" onchange="optionChanged(this.value)"></select>
@@ -140,27 +159,41 @@
     </div>
   </div>
 
-<!-- bar graph -->
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <div id="bar"></div>
-      <br></br>
+  <!-- Bar Graph -->
+  <div class="col-md-12 bar-title p-5 text-center">
+    <h2 style="font-size: 2rem;"">Compare our top 3 hotels!</h2>
+  </div>
+  <div class="bar-graph-separator">
+    <img src="Images/Hotel_icon.jpg" alt="Separator Icon" class="separator-icon">
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div id="bar"></div>
+        <br>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- bubble chart -->
-<div class="row">
-  <div class="col-md-8">
-    <img src="Images/HotelReviews.png" alt="Hotel Reviews" class="img-fluid" style="max-width: 100%; height: auto;">
-  </div>
-  <div class="col-md-4">
-    <div class="card card-body bg-light">
-      <h4>Image Description</h4>
-      <p>This image shows the reviews for various hotels in Hawaii. The reviews are based on customer feedback and ratings.</p>
+  <!-- Image and Description -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <img src="Images/HotelReviews.png" alt="Hotel Reviews" class="img-fluid" style="max-width: 100%; height: auto;">
+      </div>
+      <div class="col-md-4">
+        <div class="card card-body bg-light">
+          <h4>View our top 20 hotels by rating</h4>
+          <span>Check out our most recent data displaying from Yelp showcasing hotels by rating and amount of reviews.</span>
+        </div>
+        <br></br>
+        <h5>Watch and Explore: Top Hotel Reviews in Action!</h5>
+        <!-- YouTube Video Embed -->
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/1r0lNYPf760?si=ECAut1WvqX-3SgVs"
+          title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
     </div>
   </div>
-</div>
-</div>
+</body>
 </html>

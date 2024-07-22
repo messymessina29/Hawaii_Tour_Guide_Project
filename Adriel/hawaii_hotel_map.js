@@ -139,7 +139,6 @@ function updateBarChart(filteredMarkers) {
 
     // Define the layout for the bar chart
     let layout = {
-        title: 'Top 3 Hotels based on Rating',
         xaxis: { title: 'Hotels' },
         yaxis: { title: 'Rating' }
     };
