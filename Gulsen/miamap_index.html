@@ -136,7 +136,7 @@
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="hawaii_attractions.js"></script>
+    <script src="{{ url_for('static', filename='js/hawaii_attractions.js') }}"></script>
     <script>
         const jsonDataUrl = "{{ url_for('static', filename='json/touristic_activities.json') }}";
 
