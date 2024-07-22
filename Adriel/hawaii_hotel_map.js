@@ -44,9 +44,14 @@ d3.json('Resources/Hawaii_hotels.json').then(function(data) {
             '<h4>' + d.Name + '</h4><br>' +
             '<img src="' + d.Image_url + '" width="100" height="100"><br>' +
             'Price: ' + d.Price + '<br>' +
-            'Address: ' + d.Address + '<br>' +
             'Rating: ' + d.Rating
         );
+
+        // Adding click event listener to update side panel
+        marker.on('click', function() {
+            updateHotelInfo(d);
+        });
+
         // Save the price in marker options for filtering
         marker.options.type = d.Price;
         marker.options.data = d;
@@ -83,6 +88,30 @@ function selectPrice(data) {
     });
 }
 
+// Function to update hotel info panel
+function updateHotelInfo(hotel) {
+    // select the hotel info panel
+    let panel = d3.select('#sample-metadata');
+
+    // Clear any existing content
+    panel.html('');
+
+    // Append hotel info to panel
+    Object.entries(hotel).forEach(([key, value]) => {
+        if (key !== 'Image_url') {
+            panel.append('p').text(`${key}: ${value}`);
+        }
+    });
+
+    // Add hotel image to panel
+    if (hotel.Image_url) {
+        panel.append('img')
+            .attr('src', hotel.Image_url)
+            .attr('alt', hotel.Name)
+            .style('width', '80%')
+    }
+}
+
 // Function to update the bar chart with top 3 hotels
 function updateBarChart(filteredMarkers) {
     // Sort the filtered markers by rating and get the top 3
@@ -103,8 +132,9 @@ function updateBarChart(filteredMarkers) {
         x: names,
         y: ratings,
         text: barData.map(hotel => `Name: ${hotel.name}<br>Rating: ${hotel.rating}`),
-        marker: { color: 'blue' },
-        type: 'bar'
+        marker: { color: 'teal' },
+        type: 'bar',
+        hoverinfo: 'text'
     };
 
     // Define the layout for the bar chart
@@ -116,6 +146,17 @@ function updateBarChart(filteredMarkers) {
 
     // Render the Bar Chart
     Plotly.newPlot('bar', [bar_trace], layout);
+}
+
+// Function initalize bar chart with top 3 hotels for all prices 
+function initializeBarChart() {
+    let allMarkersArray = []
+    allMarkers.eachLayer(function(marker) {
+        allMarkersArray.push(marker.options.data);
+    });
+
+    // Update bar chart with all markers
+    updateBarChart(allMarkersArray)
 }
 
 // Handle dropdown selection change
@@ -146,5 +187,5 @@ function optionChanged(selectedprice) {
     updateBarChart(filteredMarkers);
 }
 
-// Call the updateBarChart function with an empty array when the page loads to initialize the bar chart
-updateBarChart([]);
+// Call the initializeBarChart function when the page loads 
+window.onload = initializeBarChart;

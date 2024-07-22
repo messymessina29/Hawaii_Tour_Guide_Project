@@ -15,21 +15,69 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>  
-    <style>
-      #map {
-        height: 600px;
-        margin-bottom: 60px; /* Adjust the margin value as needed */
-      }
-      .side-panel {
-        margin-top: 40px; /* Adjust the margin value as needed */
-      }
-    </style>
+  <style>
+    #map {
+      height: 600px;
+      width: 100%; 
+      background-color: white; /* Set the background color to white */
+      padding: 20px; /* Add padding inside the container */
+      border-radius: 10px; /* Rounded corners for aesthetics */
+    }
+    .side-panel {
+      margin-top: 20px; /* Adjust the margin value as needed */
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      background-image: url('Images/Oahu-Hotels-in-Hawaii.webp'); /* Path to your image */
+      background-size: cover; /* Ensure the image covers the entire container */
+      background-position: center; /* Center the image */
+      background-attachment: fixed; /* Keep the background fixed on scroll */
+      background-repeat: no-repeat; /* Do not repeat the image */
+    }
+    .navbar {
+      display: flex;
+      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background for visibility */
+      padding: 20px; /* Add padding inside the container */
+      border-radius: 10px; /* Rounded corners for aesthetics */
+    }
+      .container {
+      display: flex;
+      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background for visibility */
+      padding: 20px; /* Add padding inside the container */
+      border-radius: 10px; /* Rounded corners for aesthetics */
+    }
+    .card {
+      display: flex;
+      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background for visibility */
+      padding: 20px; /* Add padding inside the container */
+      border-radius: 10px; /* Rounded corners for aesthetics */
+    }
+    .container-fluid {
+      background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background for visibility */
+      padding: 20px; /* Add padding inside the container */
+      border-radius: 10px; /* Rounded corners for aesthetics */
+    }
+    .col-md-12 {
+      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background for visibility */
+      padding: 20px; /* Add padding inside the container */
+      border-radius: 10px; /* Rounded corners for aesthetics */
+    }
+    .col-md-4 {
+      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background for visibility */
+      padding: 20px; /* Add padding inside the container */
+      border-radius: 10px; /* Rounded corners for aesthetics */
+    }
+
+  </style>
 </head>
 
 <body>
   <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index.html">Hawaii Tourism Info</a>
+    <a class="navbar-brand" href="index.html">AlohaVista</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -52,11 +100,11 @@
   </nav>
 
   <!-- Main Header Content -->
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-12 p-5 text-center bg-light">
-        <h1>Visuals</h1>
-        <p>Explore visual representations of Hawaii tourism data.</p>
+        <h1>Hawaii Hotels</h1>
+        <p>Browse through our collection of Hawaii hotels. Utilize the price selector to filter by price range. You will see information update in our information and Top 3 section assit you in making the best selection for your trip!</p>
       </div>
     </div>
     <div class="row">
@@ -66,31 +114,54 @@
     </div>
   </div>
 
-  <!-- Hawaii hotel Map -->
-  <div class="col-md-8"></div>
-    <div id="map"></div>
-      <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-      <script src="https://d3js.org/d3.v7.min.js"></script>
-      <script src="hawaii_hotel_map.js"></script>
-
-  <!-- Hotel Side Panel -->
-  <div class="row">
-    <div class="col-md-3 side-panel">
-      <div class="card card-body bg-light">
-        <h6>Select your hotel price range:</h6>
-        <select id="selprice" onchange="optionChanged(this.value)"></select>
-      </div>
-      <br>
-      <div class="card card-primary">
-        <div class="card-header">
-          <h4 class="card-title">Demographic Info</h4>
+  <!-- Main Content -->
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Hotel Side Panel -->
+      <div class="col-md-3 side-panel">
+        <div class="card card-body bg-light">
+          <h6>Select your hotel price range:</h6>
+          <select id="selprice" onchange="optionChanged(this.value)"></select>
         </div>
-        <div id="sample-metadata" class="card-body"></div>
+        <br>
+        <div class="card card-primary">
+          <div class="card-header">
+            <h4 class="card-title">Hotel Info</h4>
+          </div>
+          <div id="sample-metadata" class="card-body"></div>
+        </div>
       </div>
-    </div>
-    <div class="col-md-9">
-      <div id="bar"></div>
+      <!-- Hawaii Hotel Map -->
+      <div class="col-md-9">
+        <div id="map"></div>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script src="hawaii_hotel_map.js"></script>
+      </div>
     </div>
   </div>
-</body>
+
+<!-- bar graph -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div id="bar"></div>
+      <br></br>
+    </div>
+  </div>
+</div>
+
+<!-- bubble chart -->
+<div class="row">
+  <div class="col-md-8">
+    <img src="Images/HotelReviews.png" alt="Hotel Reviews" class="img-fluid" style="max-width: 100%; height: auto;">
+  </div>
+  <div class="col-md-4">
+    <div class="card card-body bg-light">
+      <h4>Image Description</h4>
+      <p>This image shows the reviews for various hotels in Hawaii. The reviews are based on customer feedback and ratings.</p>
+    </div>
+  </div>
+</div>
+</div>
 </html>
