@@ -33,16 +33,16 @@
           <a class="nav-link" href="testmain_index.html">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="templates/map_test_index.html">Dining</a>
+          <a class="nav-link" href="{{ url_for('restaurant') }}">Dining</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="templates/hotel_index.html">Hotels</a>
+          <a class="nav-link" href="{{ url_for('hotel') }}">Hotels</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="templates/live_index.html">Events</a>
+          <a class="nav-link" href="{{ url_for('live') }}">Events</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="templates/miamap_index.html">Experiences</a>
+          <a class="nav-link" href="{{ url_for('yelp') }}">Experiences</a>
         </li>
       </ul>
     </div>
