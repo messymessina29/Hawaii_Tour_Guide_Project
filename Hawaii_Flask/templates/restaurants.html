@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hawaii Map</title>
+    <title>Dine Hawaii</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/restaurant.css') }}" />
     <style>
-        #map {
-            height: 600px;
-        }
-        .table-container h6 {
-            text-align: center;
-        }
+        
     </style>
 </head>
-
-
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-4">
-                <h2>Top Restaruants to Dine at In Hawaii</h2>
+            <div class="col-12 custom-background p-5 text-center bg-light">
+                <h1 style="font-size: 4rem;">Dine Honolulu/Waikiki Area</h1>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-4 col-md-5">
+                <h6 class="text-center">Use the interactive tools below to find a restaurant that is in your budget.</h6>
                 <div class="card card-body bg-light">
                     <h6>Select What You're in the Mood For:</h6>
                     <select id="selType" onchange="optionChanged(this.value)"></select>
-                  </div>
-                  <br>
-                  <div class="card card-body bg-light table-container">
+                </div>
+                <br>
+                <h6 class="text-center">Click on the Restaurant name in the table to pop up details on the map.</h6>
+                <div class="card card-body bg-light table-container">
                     <h6>Top 5 Restaurants Sorted By Highest Rating</h6>
                     <table class="table table-striped" id="restaurantTable">
                         <thead>
@@ -41,7 +42,7 @@
                     </table>
                 </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-lg-8 col-md-7">
                 <div id="map"></div>
             </div>
         </div>
@@ -49,8 +50,8 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
-        const jsonDataUrl = "{{ url_for('static', filename='json/hawaii_restaurants_nodups.json') }}";
-    </script>
-    <script src="{{ url_for('static', filename='js/hawaii_map.js') }}"></script>
+        const jsonDataUrl = "{{ url_for('static', filename='json/restaurants.json') }}";
+      </script>
+      <script src="{{ url_for('static', filename='js/restaurants.js') }}"></script>
 </body>
 </html>

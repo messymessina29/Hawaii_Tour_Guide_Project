@@ -1,0 +1,14 @@
+#map {
+    height: 700px;
+}
+.table-container h6 {
+    text-align: center;
+}
+.custom-background {
+    background-image: url('../images/restaraunt_waikiki.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 215px;
+    color: white
+}

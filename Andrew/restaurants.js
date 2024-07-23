@@ -1,3 +1,11 @@
+document.addEventListener('DOMContentLoaded', (event) => {
+    console.log('JavaScript is working on the live page!');
+    alert('Welcome to the live page!');
+
+    // Initialize the map and other components
+    init();
+});
+
 // Variable to hold the map and markers
 let hawaii_map;
 let allMarkers = L.layerGroup();

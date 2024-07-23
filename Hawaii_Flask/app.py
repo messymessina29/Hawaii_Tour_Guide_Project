@@ -15,11 +15,11 @@ def live():
 
 @app.route('/restaurant')
 def restaurant():
-    return render_template('map_test_index.html')
+    return render_template('restaurants.html')
 
 @app.route('/yelp')
 def yelp():
-    return render_template('miamap_index.html')
+    return render_template('yelp_index.html')
 
 @app.route('/hotel')
 def hotel():
