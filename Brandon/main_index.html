@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Home - Hawaii Tourism Info</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>
+    .weather-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .weather-card {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 20px;
+      width: 200px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .weather-card img {
+      width: 35px;
+      height: 35px;
+    }
+
+    .search-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 p-5 text-center bg-light">
+        <h1>Welcome to Hawaii Tourism Info</h1>
+        <p>Explore our website to learn more about tourism in Hawaii.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">Hawaii Tourism Info</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="testmain_index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Dining</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="test2ndpage_index.html">Hotels</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="miamap_index.html">Events</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <h1>Weather Cast</h1>
+
+  <!-- Container for the search bar and button -->
+  <div class="search-container">
+    <input type="text" id="cityInput" placeholder="Enter city name">
+    <button onclick="searchCity()">Search</button>
+  </div>
+
+  <div id="weather" class="weather-container"></div>
+
+  <script>
+    const key3 = '1c38affb06ae52aeb715d4fbf79cbd8b';
+    const url3 = 'https://api.openweathermap.org/data/2.5/forecast';
+
+    function searchCity() {
+      const cityInput = document.getElementById('cityInput').value.trim();
+      const weather_container = document.getElementById('weather');
+      weather_container.innerHTML = '';
+
+      const url4 = `${url3}?q=${cityInput}&appid=${key3}&units=imperial`;
+
+      fetch(url4)
+        .then(response => response.json())
+        .then(data => {
+          createWeatherCards(data);
+        });
+    }
+
+    function createWeatherCards(data) {
+      const weather_container = document.getElementById('weather');
+      const dailyData = {};
+
+      data.list.forEach(entry => {
+        const date = entry.dt_txt.split(' ')[0];
+        if (!dailyData[date]) {
+          dailyData[date] = {
+            date: date,
+            daily_high: entry.main.temp_max,
+            daily_low: entry.main.temp_min,
+            avg_humidity: entry.main.humidity,
+            avg_wind_speed: entry.wind.speed,
+            description: entry.weather[0].description,
+            icon: entry.weather[0].icon
+          };
+        } else {
+          dailyData[date].daily_high = Math.max(dailyData[date].daily_high, entry.main.temp_max);
+          dailyData[date].daily_low = Math.min(dailyData[date].daily_low, entry.main.temp_min);
+          dailyData[date].avg_humidity = (dailyData[date].avg_humidity + entry.main.humidity) / 2;
+          dailyData[date].avg_wind_speed = (dailyData[date].avg_wind_speed + entry.wind.speed) / 2;
+          dailyData[date].description = entry.weather[0].description;
+          dailyData[date].icon = entry.weather[0].icon;
+        }
+      });
+
+      const daily_forecasts = Object.values(dailyData).sort((a, b) => new Date(a.date) - new Date(b.date));
+
+      daily_forecasts.slice(0, 3).forEach(day => {
+        const card = document.createElement('div');
+        card.className = 'weather-card';
+
+        const icon_url = `http://openweathermap.org/img/wn/${day.icon}.png`;
+
+        card.innerHTML = `
+          <img src="${icon_url}" alt="${day.description}">
+          <h2>${new Date(day.date).toDateString()}</h2>
+          <p>High: ${day.daily_high.toFixed(1)} °F</p>
+          <p>Low: ${day.daily_low.toFixed(1)} °F</p>
+          <p>Humidity: ${day.avg_humidity.toFixed(1)} %</p>
+          <p>Wind Speed: ${day.avg_wind_speed.toFixed(1)} mph</p>
+          <p>${day.description}</p>
+        `;
+
+        weather_container.appendChild(card);
+      });
+    }
+  </script>
+</body>
+
+</html>

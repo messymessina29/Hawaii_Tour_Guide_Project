@@ -9,13 +9,11 @@ fetch('weather_forecast.json')
             const card = document.createElement('div');
             card.className = 'forecast-card';
 
-            card.innerHTML = `
-                <h3>${new Date(day.date).toDateString()}</h3>
-                <p>High: ${day.daily_high} °F</p>
-                <p>Low: ${day.daily_low} °F</p>
-                <p>Humidity: ${day.avg_humidity} %</p>
-                <p>Wind Speed: ${day.avg_wind_speed} mph</p>
-            `;
+            const high = day.daily_high.toFixed(2);
+            const low = day.daily_low.toFixed(2);
+            const humidity = day.avg_humidity.toFixed(2);
+            const windSpeed = day.avg_wind_speed.toFixed(2);
+            ;
 
             forecastContainer.appendChild(card);
         });
