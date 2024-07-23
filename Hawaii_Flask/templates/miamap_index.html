@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hawaii Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/yelp.css') }}" />
+</head>
+<body>
+    <div class="container full-height">
+        <div class="row justify-content-center">
+            <div class="col-md-12 p-5 text-center bg-light">
+                <h1>Events</h1>
+                <p>Explore the touristic attractions in Hawaii.</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div id="visuals-container"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <div id="topbar">Attractions in Honolulu and Waikiki</div>
+    <div class="container">
+        <div id="filter">
+            <label class="filter-label">Type:</label>
+            <select id="type-filter" class="filter-select">
+                <option value="all">All</option>
+                <option value="Parks">Parks</option>
+                <option value="Beaches">Beaches</option>
+                <option value="Museums">Museums</option>
+                <option value="Tours">Tours</option>
+                <option value="Zoos">Zoos</option>
+                <option value="Kids Activities">Kids Activities</option>
+                <option value="Boat Charters">Boat Charters</option>
+                <option value="Performing Arts">Performing Arts</option>
+                <option value="Historical Tours">Historical Tours</option>
+                <option value="Snorkeling">Snorkeling</option>
+                <option value="Art Galleries">Art Galleries</option>
+                <option value="Hiking">Hiking</option>
+                <option value="Boating">Boating</option>
+                <option value="Venues & Event Spaces">Venues & Event Spaces</option>
+                <option value="Bike Rentals">Bike Rentals</option>
+                <option value="Motorcycle Rental">Motorcycle Rental</option>
+                <option value="Motorcycle Dealers">Motorcycle Dealers</option>
+            </select>
+            <br><br>
+            <label class="filter-label">Price:</label>
+            <select id="price-filter" class="filter-select">
+                <option value="all">All</option>
+                <option value="$">$</option>
+                <option value="$$">$$</option>
+                <option value="$$$">$$$</option>
+                <option value="$$$$">$$$$</option>
+            </select>
+            <br><br>
+            <label class="filter-label">Rating:</label>
+            <select id="rating-filter" class="filter-select">
+                <option value="all">All</option>
+                <option value="2">2 & up</option>
+                <option value="3">3 & up</option>
+                <option value="4">4 & up</option>
+                <option value="4.5">4.5 & up</option>
+                <option value="5">5</option>
+            </select>
+            <br><br>
+            <button onclick="applyFilters()">GO</button>
+        </div>
+        <div id="map"></div>
+    </div>
+
+    <div class="chart-container">
+        <h2>Top 10 Highest-Rated Attractions</h2>
+        <img src="{{ url_for('static', filename='images/top_10_attractions.png') }}" alt="Top 10 Highest-Rated Attractions">
+    </div>
+    <div class="chart-container">
+        <h2>Top 5 Types with Highest Average Ratings</h2>
+        <img src="{{ url_for('static', filename='images/top_5_types.png') }}" alt="Top 5 Types with Highest Average Ratings">
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="{{ url_for('static', filename='js/hawaii_attractions.js') }}"></script>
+</body>
+</html>

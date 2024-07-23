@@ -1,3 +1,12 @@
+document.addEventListener('DOMContentLoaded', (event) => {
+    console.log('JavaScript is working on the live page!');
+    alert('Welcome to the live page!');
+
+    // Initialize the map and other components
+    init();
+});
+
+// Coordinates and zoom level for the map
 let hawaiiCoords = [21.3069, -157.8583];
 let mapZoomLevel = 13;
 
@@ -66,26 +75,14 @@ function init() {
         }
     });
 
-    let start_date_time = new Date();
-
-    // Create the end date by adding 7 days to the start date
-    let end_date_time = new Date(start_date_time);
-    end_date_time.setDate(start_date_time.getDate() + 7);
-
-    // Convert the dates to ISO 8601 format for the API query
-    let start_date_time_iso = start_date_time.toISOString();
-    let end_date_time_iso = end_date_time.toISOString();
-
-    let url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=WckojuMX77PpOVp9exwqrjxtwh6ec1G0&stateCode=HI&startDateTime=${start_date_time_iso}&endDateTime=${end_date_time_iso}&countryCode=US`;
-
     // Fetch the JSON data and build metadata for all events on the default date (if needed)
-    d3.json(url).then((data) => {
+    d3.json('/fetch-events').then((data) => {
         console.log("Data fetched from Ticketmaster API:", data);
         if (data && data._embedded && data._embedded.events) {
             var events = data._embedded.events;
             allEvents = events;
-            console.log(`Fetched ${events.length} events from the API`);
-            
+            console.log(`Fetched ${events.length} events from the Ticketmaster API`);
+
             // Use the current date for initial display
             var today = new Date().toISOString().split('T')[0];
             dateChanged(today, events);
@@ -96,7 +93,7 @@ function init() {
         console.error("Error fetching events data:", error);
     });
 
-    d3.json("touristic_activities.json").then((data) => {
+    d3.json(jsonDataUrl).then(data => {
         console.log("Data fetched from touristic_activities.json:", data);
         if (data) {
             placeYelpMarkers(data);
@@ -106,6 +103,8 @@ function init() {
     }).catch(error => {
         console.error("Error fetching touristic_activities.json:", error);
     });
+
+    createLegend(); // Create the legend when initializing the map
 }
 
 function dateChanged(date, events) {
@@ -181,11 +180,37 @@ function placeYelpMarkers(businesses) {
         let marker = L.circleMarker([lat, lon], circleStyle).addTo(yelpMarkers);
 
         marker.bindPopup(`<strong>${business.Name || 'No Name'}</strong><br>Type: ${business.Type || 'No Type'}<br>Rating: ${business.Rating || 'No Rating'}<br>${business.Address || 'No Address'}`);
-
         marker.on('click', () => {
             buildMetadata([], [business]);
         });
     });
 }
 
-init();
+function createLegend() {
+    let legend = L.control({ position: 'bottomleft' });
+
+    legend.onAdd = function (map) {
+        let div = L.DomUtil.create('div', 'info legend');
+
+        div.innerHTML += "<p><strong>Activity Groups</strong></p>";
+        
+        // Define the legend information using your existing arrays
+        const legendInfo = [
+            { type: "Tours", color: "red" },
+            { type: "Parks", color: "green" },
+            { type: "Boats", color: "blue" },
+            { type: "Arts", color: "pink" },
+            { type: "Outdoors", color: "brown" }
+        ];
+
+        // Loop through legendInfo and generate a label with a colored square for each type
+        legendInfo.forEach(item => {
+            div.innerHTML +=
+                `<i style="background:${item.color}"></i> ${item.type}<br>`;
+        });
+
+        return div;
+    };
+
+    legend.addTo(myMap); // Add legend to the map
+}

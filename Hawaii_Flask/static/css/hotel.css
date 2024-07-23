@@ -1,0 +1,83 @@
+/*body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  background-image: url('/static/images/Oahu-Hotels-in-Hawaii.webp');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+*/
+.navbar {
+  margin-bottom: 0; /* Remove the bottom margin of the navbar */
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.main-header-content {
+  margin-top: 0; /* Remove the top margin of the main header content */
+  font-weight: bold; /* Make the text bold */
+  color: white; /* Change the text color to white for better contrast */
+  text-shadow: 
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000; /* Add a black outline to the letters */
+}
+
+.header-box {
+  background-image: url('/static/images/Oahu-Hotels-in-Hawaii.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff; /* Change font color to white */
+  padding: 20px; /* Add padding inside the container */
+  border-radius: 10px; /* Rounded corners for aesthetics */
+}
+
+.container, .card {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 0px;
+}
+
+#map {
+  height: 848px;
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.side-panel {
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+.bar-title {
+  background-color: white;
+  color: #20B2AA; /* Change font color to white */
+  padding: 20px; /* Add padding inside the container */
+  border-radius: 10px; /* Rounded corners for aesthetics */
+  margin-bottom: 0px;
+}
+
+.bar-title {
+  background-color: white;
+  color: #20B2AA; /* Change font color to white */
+}
+
+.bar-graph-separator {
+  text-align: center; /* Center align the image */
+  margin-bottom: 10px; /* Add some space below the image */
+  margin-top: 0px;
+}
+
+.separator-icon {
+  width: 250px; /* Adjust the width of the image */
+  height: auto; /* Maintain the aspect ratio */
+}

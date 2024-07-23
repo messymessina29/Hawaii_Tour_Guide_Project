@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Visuals - Hawaii Tourism Info</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/hotel.css') }}">
+  <style>
+  </style>
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">AlohaVista</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="testmain_index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="visuals.html">Dining</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="maps.html">Hotels</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="miamap_index.html">Events</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Header Content -->
+  <div class="container-fluid main-header-content">
+    <div class="row">
+      <div class="col-md-12 header-box p-5 text-center bg-light">
+        <h1 style="font-size: 4rem;">Find the perfect hotel for your Hawaii Trip!</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="visuals-container"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Hotel Side Panel -->
+      <div class="col-md-3 side-panel">
+        <p>Utilize our price filter to assist you in making the best selection for your stay.</p>
+        <div class="card card-body bg-light">
+          <h6>Select your hotel price range:</h6>
+          <select id="selprice" onchange="optionChanged(this.value)"></select>
+        </div>
+        <br>
+        <div class="card card-primary">
+          <div class="card-header">
+            <h4 class="card-title">Hotel Info</h4>
+          </div>
+          <div id="sample-metadata" class="card-body"></div>
+        </div>
+      </div>
+      <!-- Hawaii Hotel Map -->
+      <div class="col-md-9">
+        <div id="map"></div>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script>
+          const jsonDataUrl = "{{ url_for('static', filename='json/Hawaii_hotels.json') }}";
+        </script>
+        <script src="{{ url_for('static', filename='js/hawaii_hotel_map.js') }}"></script>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bar Graph -->
+  <div class="col-md-12 bar-title p-5 text-center">
+    <h2 style="font-size: 2rem;">Compare our top 3 hotels!</h2>
+  </div>
+  <div class="bar-graph-separator">
+    <img src="{{ url_for('static', filename='images/Hotel_icon.jpg') }}" alt="Separator Icon" class="separator-icon">
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div id="bar"></div>
+        <br>
+      </div>
+    </div>
+  </div>
+
+  <!-- Image and Description -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <img src="{{ url_for('static', filename='images/HotelReviews.png') }}" alt="Hotel Reviews" class="img-fluid" style="max-width: 100%; height: auto;">
+      </div>
+      <div class="col-md-4">
+        <div class="card card-body bg-light">
+          <h4>View our top 20 hotels by rating</h4>
+          <span>Check out our most recent data displaying from Yelp showcasing hotels by rating and amount of reviews.</span>
+        </div>
+        <br></br>
+        <h5>Watch and Explore: Top Hotel Reviews in Action!</h5>
+        <!-- YouTube Video Embed -->
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/1r0lNYPf760?si=ECAut1WvqX-3SgVs"
+          title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Event Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/live.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Hawaii Live!</h1>
+      <h4>Check out the upcoming live shows all over Hawaii using our interactive calendar!</h4>
+      <a id="tm_link" href="https://www.ticketmaster.com/?landing=c&awtrc=true&c=SEM_TMBRAND_ggl_298560299_24300724499_ticketmaster.com&GCID=0&&gad_source=1&gclid=CjwKCAjw1920BhA3EiwAJT3lSTiBIvBdGfQIzHGFkCIvj9_LsVn4qCe9JNJYiwSosUq6-lS_9ofvchoCmh4QAvD_BwE&gclsrc=aw.ds" target="_blank">Visit Ticketmaster</a>
+    </div>
+    <div class="flex-container">
+      <div class="event-info">
+        <div class="card-primary">
+          <div id="event-info-title">
+            <h4 class="card-title">Live Event Info</h4>
+          </div>
+          <div id="sample-metadata" class="card-body"></div>
+        </div>
+      </div>
+      <div class="column-container">
+        <div class="calendar-container">
+          <div id="datePicker"></div>
+        </div>
+        <div class="additional-info">
+          <div class="card-primary">
+            <div id="additional-info-title">
+              <h4 class="card-title">Information on Yelp activities</h4>
+            </div>
+            <div id="event-details" class="card-body"></div>
+          </div>
+        </div>
+      </div>
+      <div class="map-container">
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const jsonDataUrl = "{{ url_for('static', filename='json/touristic_activities.json') }}";
+  </script>
+  <script src="{{ url_for('static', filename='js/tm_visuals_stable.js') }}"></script>
+</body>
+</html>
