@@ -19,7 +19,7 @@ def restaurant():
 
 @app.route('/yelp')
 def yelp():
-    return render_template('miamap_index.html')
+    return render_template('yelp_index.html')
 
 @app.route('/hotel')
 def hotel():
