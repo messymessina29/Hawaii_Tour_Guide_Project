@@ -122,3 +122,10 @@ body {
     font-weight: bold;
     text-align: center;
 }
+
+.navbar {
+    margin-bottom: 0; /* Remove the bottom margin of the navbar */
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+}
