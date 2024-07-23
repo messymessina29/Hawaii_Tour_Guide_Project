@@ -4,6 +4,32 @@
     <title>Hawaii Map</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
+            <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="index.html">AlohaVista</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="testmain_index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="visuals.html">Dining</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="hotel_index.html">Hotels</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="live_index.html">Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="miamap_index.html">Experiences</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
         body {
             margin: 0;
             font-family: Arial;
@@ -136,7 +162,8 @@
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="{{ url_for('static', filename='js/hawaii_attractions.js') }}"></script>
+    <script src="hawaii_attractions.js"></script>
+
     <script>
         const jsonDataUrl = "{{ url_for('static', filename='json/touristic_activities.json') }}";
 

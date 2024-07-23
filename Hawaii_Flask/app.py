@@ -11,7 +11,7 @@ def home():
 
 @app.route('/live')
 def live():
-    return render_template('index_flask.html')
+    return render_template('live_index.html')
 
 @app.route('/restaurant')
 def restaurant():

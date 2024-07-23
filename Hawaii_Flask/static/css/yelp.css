@@ -1,4 +1,11 @@
-body {
+.navbar {
+    margin-bottom: 0; /* Remove the bottom margin of the navbar */
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  body {
     margin: 0;
     font-family: Arial;
     background-image: url('/static/images/night.jfif'); /* Path to your image */
