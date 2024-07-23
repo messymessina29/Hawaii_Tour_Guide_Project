@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 let hawaii_map;
 let allMarkers = L.layerGroup();
 let street;
+let restMarkers = new Map(); // Map to store markers by restaurant name
 
 // Function to create the map with base layers and overlays
 function createMap() {
@@ -18,14 +19,14 @@ function createMap() {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     });
 
-    // Create the map of Hawaii
+    // Create the map
     hawaii_map = L.map("map", {
         center: [21.3099, -157.8581],
-        zoom: 13,
+        zoom: 12,
         layers: [street]
     });
 
-    // Add layer control to the map
+    // Add layer control
     L.control.layers({
         "Street Map": street
     }, {}, {
@@ -34,7 +35,7 @@ function createMap() {
 }
 
 // Load the restaurant data and create markers
-d3.json(jsonDataUrl).then(function(data) {
+d3.json('/static/json/hawaii_restaurants_nodups.json').then(function(data) {
     // Create a layer group for restaurant markers
     data.forEach(function(d) {
         // Create a marker for each restaurant
@@ -43,6 +44,7 @@ d3.json(jsonDataUrl).then(function(data) {
         );
         marker.type = d.Type;  // Add a custom property to the marker
         allMarkers.addLayer(marker);
+        restMarkers.set(d.Name, marker); // Store marker in the restaurant map
     });
 
     // Add the restaurant markers to the map
@@ -55,12 +57,12 @@ d3.json(jsonDataUrl).then(function(data) {
     window.initialData = data;
 });
 
-// Function to populate the dropdown with unique restaurant types
+// Function to populate the dropdown with restaurant types
 function selectTypes(data) {
-    // Extract unique restaurant types
+    // Extract types
     let restTypes = [...new Set(data.map(d => d.Type))];
 
-    // Select the dropdown element
+    // Select the dropdown
     let selector = d3.select('#selType');
 
     // Add an "All" option
@@ -111,7 +113,11 @@ function createTable(selectedType) {
     // Append rows with the top 5 restaurants
     top5rest.forEach(d => {
         let row = tablebody.append("tr");
-        row.append("td").text(d.Name);
+        let clickName = row.append("td").text(d.Name).style("cursor", "pointer").on("click", function() {
+            let marker = restMarkers.get(d.Name);
+            hawaii_map.setView(marker.getLatLng(), 15);
+            marker.openPopup();
+        });
         row.append("td").text(d.Rating);
         row.append("td").text(d.Price);
     });
@@ -121,4 +127,3 @@ function createTable(selectedType) {
 function init() {
     createMap();
 }
-
