@@ -16,6 +16,13 @@
   padding: 20px;
   border-radius: 10px;
 }
+.header-content h1 {
+  font-size: 24px; /* Adjust the font size as needed */
+}
+
+.header-content p {
+  font-size: 16px; /* Adjust the font size as needed */
+}
 
 .main-header-content {
   margin-top: 0; /* Remove the top margin of the main header content */

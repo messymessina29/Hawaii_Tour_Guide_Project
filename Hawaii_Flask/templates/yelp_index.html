@@ -4,6 +4,8 @@
     <title>Hawaii Map</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/yelp.css') }}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -27,26 +29,32 @@
             <a class="nav-link" href="live_index.html">Events</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="miamap_index.html">Experiences</a>
+            <a class="nav-link" href="yelp_index.html">Experiences</a>
           </li>
         </ul>
       </div>
     </nav>
   
-<body>
-    <div class="container full-height">
-        <div class="row justify-content-center">
-            <div class="col-md-12 p-5 text-center bg-light">
-                <h1>Events</h1>
-                <p>Explore the touristic attractions in Hawaii.</p>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div id="visuals-container"></div>
-            </div>
-        </div>
-    </div>
+    <!-- Main Header Content --> <!-- Main Header Content --> 
+<!-- Main Header Content --> 
+
+<div class="container full-height">
+  <div class="row justify-content-center">
+      <div class="col-md-12 text-center header-content">
+          <h1>Events</h1>
+          <p>Explore the touristic attractions in Hawaii.</p>
+      </div>
+  </div>
+  <div class="row justify-content-center">
+      <div class="col-md-12">
+          <div id="visuals-container"></div>
+      </div>
+  </div>
+</div>
+
+
+    
+
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
