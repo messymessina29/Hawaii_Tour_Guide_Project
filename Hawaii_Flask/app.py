@@ -23,7 +23,7 @@ def yelp():
 
 @app.route('/hotel')
 def hotel():
-    return render_template('test2ndpage_index.html')
+    return render_template('hotel_index.html')
 
 @app.route('/fetch-events', methods=['GET'])
 def fetch_events():
