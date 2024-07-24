@@ -7,23 +7,121 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Home - Hawaii Tourism Info</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: #e0f7fa;
+      background-image: linear-gradient(45deg, #f0f8ff 25%, transparent 25%, transparent 50%, #f0f8ff 50%, #f0f8ff 75%, transparent 75%, transparent);
+    }
+
+    .header-bg {
+      background-image: url('https://t4.ftcdn.net/jpg/03/97/09/63/360_F_397096316_LCuuAQjV8lQ4NR6eY5z8hr1bPGhHj47v.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      border-radius: 40px;
+    }
+
+    .header-bg img {
+      display: none;
+    }
+
+    .weather-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .weather-card {
+      background: #dee2e6;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 20px;
+      width: 200px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .weather-card img {
+      width: 35px;
+      height: 35px;
+    }
+
+    .search-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .hawaii-image {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .info-card {
+      margin: 20px 0;
+      padding: 20px;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      background-color: #f0f8ff;
+    }
+
+    .info-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .info-card h3 {
+      margin-top: 15px;
+    }
+
+    .navbar {
+      margin-bottom: 0;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .side-pattern {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 100px;
+      background-image: url('data:image/jpeg;base64,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');
+      background-size: cover;
+      background-repeat: no-repeat;
+      z-index: -1;
+    }
+
+    .side-pattern-left {
+      left: 0;
+    }
+
+    .side-pattern-right {
+      right: 0;
+    }
+  </style>
 </head>
 
-
 <body>
-  <!-- Main Content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 p-5 text-center bg-light">
-        <h1>Welcome to Hawaii Tourism Info</h1>
-        <p>Explore our website to learn more about tourism in Hawaii.</p>
-      </div>
-    </div>
-  </div>
+  <div class="side-pattern side-pattern-left"></div>
+  <div class="side-pattern side-pattern-right"></div>
 
   <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index.html">Hawaii Tourism Info</a>
+    <a class="navbar-brand" href="index.html">AlohaVista</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -33,97 +131,151 @@
           <a class="nav-link" href="testmain_index.html">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Dining</a>
+          <a class="nav-link" href="{{ url_for('restaurant') }}">Dining</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="test2ndpage_index.html">Hotels</a>
+          <a class="nav-link" href="{{ url_for('hotel') }}">Hotels</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="miamap_index.html">Events</a>
+          <a class="nav-link" href="{{ url_for('yelp') }}">Events</a>
         </li>
       </ul>
     </div>
   </nav>
 
-</head>
-<body>
-    <h1>Weather App</h1>
-
-    <!-- Container for the search bar and button -->
-    <div class="search-container">
-        <input type="text" id="cityInput" placeholder="Enter city name">
-        <button onclick="searchCity()">Search</button>
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 p-5 header-bg">
+        <h1>Welcome to AlohaVista</h1>
+        <p></p>
+        <img src="images/hawaii.jpg" class="hawaii-image" alt="">
+      </div>
     </div>
+  </div>
 
-    <div id="weather" class="weather-container"></div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="info-text">
+          <h2>Welcome!</h2>
+          <p>Welcome to the AlohaVista homepage, first of all thank you for visiting our website where all you need to have the perfect vacation is one click away!
+            Whether you're planning a relaxing vacation or an adventurous getaway, AlohaVista has everything you need to make your trip unforgettable. Explore our maps with filters to find the perfect
+             hotel to relax and unwind, and stay up to date with the latest events happening across the islands. Need tickets for that must-see show or cultural festival? No worries! We've got you covered!
+              Dive into the vibrant culture, stunning landscapes, and endless activities that Hawaii has to offer. Start your Hawaiian adventure with AlohaVista today!
+         </p>
+       </div>
+     </div>
+   </div>
+ </div>
 
-    <script>
-        const key3 = '1c38affb06ae52aeb715d4fbf79cbd8b';
+ <h2>Weather Cast</h2>
 
-        const url3 = 'https://api.openweathermap.org/data/2.5/forecast';
+ <!-- Container for the search bar and button -->
+ <div class="search-container">
+   <input type="text" id="cityInput" placeholder="Enter city name">
+   <button onclick="searchCity()">Search</button>
+ </div>
 
-        function searchCity() {
-            const cityInput = document.getElementById('cityInput').value.trim();
-            const weatherContainer = document.getElementById('weather');
-            weatherContainer.innerHTML = '';
+ <div id="weather" class="weather-container"></div>
 
-            const url4 = `${url3}?q=${cityInput}&appid=${key3}&units=imperial`;
+ <script>
+   const key3 = '1c38affb06ae52aeb715d4fbf79cbd8b';
+   const url3 = 'https://api.openweathermap.org/data/2.5/forecast';
 
-            fetch(url4)
-                .then(response => response.json())
-                .then(data => {
-                    createWeatherCards(data);
-                });
-        }
+   function searchCity() {
+     const cityInput = document.getElementById('cityInput').value.trim();
+     const weather_container = document.getElementById('weather');
+     weather_container.innerHTML = '';
 
-        function createWeatherCards(data) {
-            const weatherContainer = document.getElementById('weather');
-            const dailyData = {};
+     const url4 = `${url3}?q=${cityInput}&appid=${key3}&units=imperial`;
 
-            data.list.forEach(entry => {
-                const date = entry.dt_txt.split(' ')[0];
-                if (!dailyData[date]) {
-                    dailyData[date] = {
-                        date: date,
-                        daily_high: entry.main.temp_max,
-                        daily_low: entry.main.temp_min,
-                        avg_humidity: entry.main.humidity,
-                        avg_wind_speed: entry.wind.speed,
-                        description: entry.weather[0].description,
-                        icon: entry.weather[0].icon
-                    };
-                } else {
-                    dailyData[date].daily_high = Math.max(dailyData[date].daily_high, entry.main.temp_max);
-                    dailyData[date].daily_low = Math.min(dailyData[date].daily_low, entry.main.temp_min);
-                    dailyData[date].avg_humidity = (dailyData[date].avg_humidity + entry.main.humidity) / 2;
-                    dailyData[date].avg_wind_speed = (dailyData[date].avg_wind_speed + entry.wind.speed) / 2;
-                    dailyData[date].description = entry.weather[0].description;
-                    dailyData[date].icon = entry.weather[0].icon;
-                    
-                }
-            });
+     fetch(url4)
+       .then(response => response.json())
+       .then(data => {
+         createWeatherCards(data);
+       });
+   }
 
-            const dailyForecasts = Object.values(dailyData).sort((a, b) => new Date(a.date) - new Date(b.date));
+   function createWeatherCards(data) {
+     const weather_container = document.getElementById('weather');
+     const dailyData = {};
 
-            dailyForecasts.slice(0, 3).forEach(day => {
-                const card = document.createElement('div');
-                card.className = 'weather-card';
+     data.list.forEach(entry => {
+       const date = entry.dt_txt.split(' ')[0];
+       if (!dailyData[date]) {
+         dailyData[date] = {
+           date: date,
+           daily_high: entry.main.temp_max,
+           daily_low: entry.main.temp_min,
+           avg_humidity: entry.main.humidity,
+           avg_wind_speed: entry.wind.speed,
+           description: entry.weather[0].description,
+           icon: entry.weather[0].icon
+         };
+       } else {
+         dailyData[date].daily_high = Math.max(dailyData[date].daily_high, entry.main.temp_max);
+         dailyData[date].daily_low = Math.min(dailyData[date].daily_low, entry.main.temp_min);
+         dailyData[date].avg_humidity = (dailyData[date].avg_humidity + entry.main.humidity) / 2;
+         dailyData[date].avg_wind_speed = (dailyData[date].avg_wind_speed + entry.wind.speed) / 2;
+         dailyData[date].description = entry.weather[0].description;
+         dailyData[date].icon = entry.weather[0].icon;
+       }
+     });
 
-                const icon_url = `http://openweathermap.org/img/wn/${day.icon}.png`;
+     const daily_forecasts = Object.values(dailyData).sort((a, b) => new Date(a.date) - new Date(b.date));
 
-                card.innerHTML = `
-                    <img src="${icon_url}" alt="${day.description}">
-                    <h2>${new Date(day.date).toDateString()}</h2>
-                    <p>High: ${day.daily_high.toFixed(1)} °F</p>
-                    <p>Low: ${day.daily_low.toFixed(1)} °F</p>
-                    <p>Humidity: ${day.avg_humidity.toFixed(1)} %</p>
-                    <p>Wind Speed: ${day.avg_wind_speed.toFixed(1)} mph</p>
-                    <p>${day.description}</p>
-                `;
+     daily_forecasts.slice(0, 3).forEach(day => {
+       const card = document.createElement('div');
+       card.className = 'weather-card';
 
-                weatherContainer.appendChild(card);
-            });
-        }
-    </script>
+       const icon_url = `http://openweathermap.org/img/wn/${day.icon}.png`;
+
+       card.innerHTML = `
+         <img src="${icon_url}" alt="${day.description}">
+         <h2>${new Date(day.date).toDateString()}</h2>
+         <p>High: ${day.daily_high.toFixed(1)} °F</p>
+         <p>Low: ${day.daily_low.toFixed(1)} °F</p>
+         <p>Humidity: ${day.avg_humidity.toFixed(1)} %</p>
+         <p>Wind Speed: ${day.avg_wind_speed.toFixed(1)} mph</p>
+         <p>${day.description}</p>
+       `;
+
+       weather_container.appendChild(card);
+     });
+   }
+ </script>
+
+ <!-- Info Cards Section -->
+ <div class="container">
+   <h2>At a glance</h2>
+   <div class="row">
+     <div class="col-md-4">
+       <div class="info-card">
+         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB35gT47QSm6YPuwMjX0loKhQ3gi5ueR2H0Q&s" alt="Mālama Hawai‘i">
+         <h3>Cuisine</h3>
+         <p>Explore all the foods that Hawaii has to offer</p>
+         <a href="{{ url_for('restaurant') }}">More &gt;</a>
+       </div>
+     </div>
+     <div class="col-md-4">
+       <div class="info-card">
+         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV11UEucvCaerEgsVJtv5FYZCaEkj0ouvDeg&s" alt="Activities and Events">
+         <h3>Activities and Events</h3>
+         <p>Explore all events and activities and secure your tickets!</p>
+         <a href="{{ url_for('live') }}">More &gt;</a>
+       </div>
+     </div>
+     <div class="col-md-4">
+       <div class="info-card">
+         <img src="https://www.hawaiimagazine.com/content/uploads/2021/04/x/t/hhvparadisepool.jpg" alt="Hotels">
+         <h3>Hotels</h3>
+         <p>Secure your stay!</p>
+         <a href="{{ url_for('hotel') }}">More &gt;</a>
+       </div>
+     </div>
+   </div>
+ </div>
 </body>
+
 </html>

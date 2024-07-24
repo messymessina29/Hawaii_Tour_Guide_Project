@@ -66,3 +66,36 @@ document.getElementById('price-filter').addEventListener('change', applyFilters)
 document.getElementById('rating-filter').addEventListener('change', applyFilters);
 document.getElementById('type-filter').addEventListener('change', applyFilters);
 document.querySelector('button').addEventListener('click', applyFilters);
+
+// Function to update the table with top 5 events based on the selected type
+function createTable(selectedType) {
+    // Filter data based on the selected type
+    let filteredData = window.initialData.filter(d => selectedType === "All" || d.Type === selectedType);
+
+    // Sort data by rating in descending order
+    filteredData.sort((a, b) => b.Rating - a.Rating);
+
+    // Get the top 5 events
+    let top5events = filteredData.slice(0, 5);
+
+    // Select the table body
+    let tablebody = d3.select("#eventTable tbody");
+
+    // Clear existing rows
+    tablebody.html("");
+
+    // Append rows with the top 5 events
+    top5events.forEach(d => {
+        let row = tablebody.append("tr");
+        let clickName = row.append("td").text(d.Name).style("cursor", "pointer").on("click", function() {
+            let marker = eventMarkers.get(d.Name); // Assuming eventMarkers is a Map of event names to markers
+            hawaii_map.setView(marker.getLatLng(), 15);
+            marker.openPopup();
+        });
+        row.append("td").text(d.Rating);
+        row.append("td").text(d.Price);
+    });
+}
+
+// Initialize the map
+createMap();
