@@ -1,4 +1,7 @@
 # AlohaVista
+
+Link to website: [AlohaVista](http://127.0.0.1:5000)
+
 Our project is focused on creating a webpage that is a tourist guide for visiting Honolulu, Hawaii. We want to give users who visit our webpage the option to navigate the settings, stays, and attractions that Hawaii offers: hotels, restaurants, experiences, events and weather.
 
 We are going to use the Data Visualization Track which will consist of a webpage that consists of 4-5 different visualizations of the attractions that Hawaii has to offer (mentioned above: hotel, restaurants, attractions…). These visualizations will have a few parameters that include price and rating. Other additional parameters like hours of operation may be added. 
