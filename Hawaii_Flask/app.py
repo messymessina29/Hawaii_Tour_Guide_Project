@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return '<h1>Home Page would be here</h1>'
+    return render_template('main_index.html')
 
 @app.route('/live')
 def live():

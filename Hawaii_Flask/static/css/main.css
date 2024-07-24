@@ -1,0 +1,106 @@
+body {
+    background-color: #e0f7fa;
+    background-image: url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png'),
+                    linear-gradient(45deg, #f0f8ff 25%, transparent 25%, transparent 50%, #f0f8ff 50%, #f0f8ff 75%, transparent 75%, transparent);
+    background-size: auto, cover;
+}
+
+.header-bg {
+    background-image: url('https://t4.ftcdn.net/jpg/03/97/09/63/360_F_397096316_LCuuAQjV8lQ4NR6eY5z8hr1bPGhHj47v.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    border-radius: 10px;
+}
+
+.header-bg img {
+    display: none;
+}
+
+.weather-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.weather-card {
+    background: #dee2e6;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.weather-card img {
+    width: 35px;
+    height: 35px;
+}
+
+.search-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.hawaii-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.info-card {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #f0f8ff;
+}
+
+.info-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.info-card h3 {
+    margin-top: 15px;
+}
+
+.navbar {
+    margin-bottom: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.side-pattern {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    background-image: url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.side-pattern-left {
+    left: 0;
+}
+
+.side-pattern-right {
+    right: 0;
+}

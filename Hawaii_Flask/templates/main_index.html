@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Home - Hawaii Tourism Info</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>
+    .info-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 10px 0;
+      text-align: center;
+    }
+    .info-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .info-card h3 {
+      margin-top: 15px;
+      margin-bottom: 10px;
+    }
+    .info-card p {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="side-pattern side-pattern-left"></div>
+  <div class="side-pattern side-pattern-right"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">AlohaVista</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('restaurant') }}">Dining</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('hotel') }}">Hotels</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('yelp') }}">Experiences</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('live') }}">Events</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 p-5 header-bg">
+        <h1>Welcome to AlohaVista</h1>
+        <p></p>
+        <img src="images/hawaii.jpg" class="hawaii-image" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="info-text">
+          <h2>Welcome!</h2>
+          <p>Welcome to the AlohaVista homepage, where all you need to have the perfect vacation is one click away!
+             Whether you're planning a relaxing vacation or an adventurous getaway, AlohaVista has everything you need to make your trip unforgettable. Explore our maps with filters to find the perfect hotel to relax and unwind, and stay up to date with the latest events happening across the islands. Need tickets for that must-see show or cultural festival? No worries! We've got you covered! Dive into the vibrant culture, stunning landscapes, and endless activities that Hawaii has to offer. Start your Hawaiian adventure with AlohaVista today!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Weather Cast</h2>
+
+  <!-- Container for the search bar and button -->
+  <div class="search-container">
+    <input type="text" id="cityInput" placeholder="Enter city name">
+    <button onclick="searchCity()">Search</button>
+  </div>
+
+  <div id="weather" class="weather-container"></div>
+
+  <script>
+    const key3 = '1c38affb06ae52aeb715d4fbf79cbd8b';
+    const url3 = 'https://api.openweathermap.org/data/2.5/forecast';
+
+    function searchCity() {
+      const cityInput = document.getElementById('cityInput').value.trim();
+      const weather_container = document.getElementById('weather');
+      weather_container.innerHTML = '';
+
+      const url4 = `${url3}?q=${cityInput}&appid=${key3}&units=imperial`;
+
+      fetch(url4)
+        .then(response => response.json())
+        .then(data => {
+          createWeatherCards(data);
+        });
+    }
+
+    function createWeatherCards(data) {
+      const weather_container = document.getElementById('weather');
+      const dailyData = {};
+
+      data.list.forEach(entry => {
+        const date = entry.dt_txt.split(' ')[0];
+        if (!dailyData[date]) {
+          dailyData[date] = {
+            date: date,
+            daily_high: entry.main.temp_max,
+            daily_low: entry.main.temp_min,
+            avg_humidity: entry.main.humidity,
+            avg_wind_speed: entry.wind.speed,
+            description: entry.weather[0].description,
+            icon: entry.weather[0].icon
+          };
+        } else {
+          dailyData[date].daily_high = Math.max(dailyData[date].daily_high, entry.main.temp_max);
+          dailyData[date].daily_low = Math.min(dailyData[date].daily_low, entry.main.temp_min);
+          dailyData[date].avg_humidity = (dailyData[date].avg_humidity + entry.main.humidity) / 2;
+          dailyData[date].avg_wind_speed = (dailyData[date].avg_wind_speed + entry.wind.speed) / 2;
+          dailyData[date].description = entry.weather[0].description;
+          dailyData[date].icon = entry.weather[0].icon;
+        }
+      });
+
+      const daily_forecasts = Object.values(dailyData).sort((a, b) => new Date(a.date) - new Date(b.date));
+
+      daily_forecasts.slice(0, 3).forEach(day => {
+        const card = document.createElement('div');
+        card.className = 'weather-card';
+
+        const icon_url = `http://openweathermap.org/img/wn/${day.icon}.png`;
+
+        card.innerHTML = `
+          <img src="${icon_url}" alt="${day.description}">
+          <h2>${new Date(day.date).toDateString()}</h2>
+          <p>High: ${day.daily_high.toFixed(1)} °F</p>
+          <p>Low: ${day.daily_low.toFixed(1)} °F</p>
+          <p>Humidity: ${day.avg_humidity.toFixed(1)} %</p>
+          <p>Wind Speed: ${day.avg_wind_speed.toFixed(1)} mph</p>
+          <p>${day.description}</p>
+        `;
+
+        weather_container.appendChild(card);
+      });
+    }
+  </script>
+
+  <!-- Info Cards Section -->
+  <div class="container">
+    <h2>At a glance</h2>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="info-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB35gT47QSm6YPuwMjX0loKhQ3gi5ueR2H0Q&s" alt="Mālama Hawai‘i">
+          <h3>Restaurants</h3>
+          <p>Explore all kinds of restaurants that satisfies your mood and price range!</p>
+          <a href="{{ url_for('restaurant') }}">More &gt;</a>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="info-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEpWdB7pAATyFDEHHHvWvXME6GfGP6uKOSFQ&s" alt="">
+          <h3>Events</h3>
+          <p>Explore all events and activities and secure your tickets!</p>
+          <a href="{{ url_for('live') }}">More &gt;</a>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="info-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV11UEucvCaerEgsVJtv5FYZCaEkj0ouvDeg&s" alt="">
+          <h3>Experiences</h3>
+          <p>Explore all events and activities and secure your tickets!</p>
+          <a href="{{ url_for('yelp') }}">More &gt;</a>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="info-card">
+          <img src="https://www.hawaiimagazine.com/content/uploads/2021/04/x/t/hhvparadisepool.jpg" alt="Arts and Culture in Hawai‘i">
+          <h3>Hotels</h3>
+          <p>Explore the hotels and all they have to offer!</p>
+          <a href="{{ url_for('hotel') }}">More &gt;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
