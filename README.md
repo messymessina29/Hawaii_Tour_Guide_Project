@@ -50,4 +50,9 @@ __Build Considerations__
         >db = client['Hawaii_DB']
         >collection = db['Hawaii_Hotels']
     * The call was than put into a DataFrame and helped pull the following visualization:
-        ![alt text](Adriel/Images/HotelReviews.png)
+        ![alt text](Hawaii_Flask/static/images/HotelReviews.png)
+3. __Additional Visualizations created__
+    * Visualizations can be found in the following file ```top_rating-atts.ipynb``` located in the path ```Hawaii_Tour_Guide_Project/Gulsen```
+        ![alt text](Hawaii_Flask/static/images/top_5_types.png)
+        ![alt text](Hawaii_Flask/static/images/top_10_attractions.png)
+
