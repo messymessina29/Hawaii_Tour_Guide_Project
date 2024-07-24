@@ -30,7 +30,7 @@ __Build Considerations__
 ---
 
  __Reference Code__
- 1. __API Build__: Yelp was a key data source for much of our hotel and restaurant data. Yelp developer portal provided key reference code, paramaters, and imports that allowed us to build our API calls. Here is the code that was referenced to build the calls:
+ 1. __Yelp API Build__: Yelp was a key data source for much of our hotel and restaurant data. Yelp developer portal provided key reference code, paramaters, and imports that allowed us to build our API calls. Here is the code that was referenced to build the calls:
     * ```import requests```
        
         ```url = "https://api.yelp.com/v3/businesses/matches?limit=3&match_threshold=default"```
@@ -44,7 +44,7 @@ __Build Considerations__
 
 2. __Database Storage__: For this project ```MonogoDB``` was utilized to store JSON files (```Hawaii_hotels.json```)
     * This database was then called in the following file ```Hawaii_hotel_visualizations.ipynb``` that can be found in this path ```Hawaii_Tour_Guide_Project/Adriel```
-    * This code to call to ```MongoDB`` was the following:
+    * This code to call to ```MongoDB``` was the following:
         
         >```client = pymongo.MongoClient("mongodb://localhost:27017/")
         >db = client['Hawaii_DB']
