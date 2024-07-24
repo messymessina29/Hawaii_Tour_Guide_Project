@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    console.log('JavaScript is working on the live page!');
-    alert('Welcome to the live page!');
-
     // Initialize the map and other components
     init();
 });
