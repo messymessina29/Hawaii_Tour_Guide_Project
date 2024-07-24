@@ -50,4 +50,4 @@ __Build Considerations__
         >db = client['Hawaii_DB']
         >collection = db['Hawaii_Hotels']
     * The call was than put into a DataFrame and helped pull the following visualization:
-        
+        ![alt text](Adriel/Images/HotelReviews.png)
